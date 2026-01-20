@@ -33,7 +33,7 @@ const rules = [
     reply: "Cj is the leader of group 2, the group that made  TalBot"
   },
   {
-    keywords: ["god, jesus"],
+    keywords: ["god", "jesus"],
     reply: "God is good all the time, and all the time God is good, God is great."
   }
 ];
@@ -63,4 +63,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`TalBot running on port ${PORT}`);
 });
+
 

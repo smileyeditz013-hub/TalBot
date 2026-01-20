@@ -25,11 +25,11 @@ const rules = [
     reply: "Our principal is maam abueva"
   },
   {
-    keywords: ["Angeline"],
-    reply: "Angeline is a hardworking student known for her beauty"
+    keywords: ["angeline"],
+    reply: "i love you so much angeyan ko<3<3<3<3"
   },
   {
-    keywords: ["Kuya Cj Cantilado"],
+    keywords: ["cj", "kuya cj"],
     reply: "Cj is Gay"
   }
 ];

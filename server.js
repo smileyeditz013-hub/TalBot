@@ -19,6 +19,18 @@ const rules = [
   {
     keywords: ["tuition", "fees"],
     reply: "Our school fees depend on the grade level."
+  },
+  {
+    keywords: ["principal"],
+    reply: "Our principal is maam abueva"
+  },
+  {
+    keywords: ["Angeline"],
+    reply: "Angeline is a hardworking student known for her beauty"
+  },
+  {
+    keywords: ["Kuya Cj Cantilado"],
+    reply: "Cj is Gay"
   }
 ];
 

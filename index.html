@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TalBot</title>
+    <style>
+        body { font-family: Arial; background:#f4f4f4; }
+        #chat { width: 400px; margin: 40px auto; background: white; padding: 10px; }
+        .msg { margin: 5px 0; }
+        .bot { color: blue; }
+        .user { text-align: right; color: green; }
+    </style>
+</head>
+<body>
+
+<div id="chat">
+    <div id="messages"></div>
+    <input id="input" placeholder="Ask TalBot..." />
+    <button onclick="send()">Send</button>
+</div>
+
+<script>
+async function send() {
+    const input = document.getElementById("input");
+    const msg = input.value;
+    input.value = "";
+
+    document.getElementById("messages").innerHTML +=
+        `<div class='msg user'>${msg}</div>`;
+
+    const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("messages").innerHTML +=
+        `<div class='msg bot'>${data.reply}</div>`;
+}
+</script>
+
+</body>
+</html>

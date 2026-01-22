@@ -5,8 +5,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ✅ SERVE THE WEBSITE
+app.use(express.static("public"));
+
 // ===============================
-// SCHOOL INFORMATION (DO NOT CHANGE CONTENT)
+// SCHOOL INFORMATION (DO NOT ADD / REMOVE INFO)
 // ===============================
 const knowledgeBase = {
   enrollment: {
@@ -35,10 +38,10 @@ function detectLanguage(message) {
 }
 
 // ===============================
-// FRIENDLY REPHRASING (NO NEW INFO)
+// FRIENDLY REPHRASING
 // ===============================
 function rephrase(info, lang) {
-  const styles_en = [
+  const en = [
     `Sure! ${info}`,
     `No problem 😊 ${info}`,
     `Here’s what I know: ${info}`,
@@ -46,7 +49,7 @@ function rephrase(info, lang) {
     `Happy to help! ${info}`
   ];
 
-  const styles_tl = [
+  const tl = [
     `Sige! 😊 ${info}`,
     `Walang problema! ${info}`,
     `Narito ang aking alam: ${info}`,
@@ -54,36 +57,29 @@ function rephrase(info, lang) {
     `Masaya akong tumulong! ${info}`
   ];
 
-  const styles = lang === "tl" ? styles_tl : styles_en;
+  const styles = lang === "tl" ? tl : en;
   return styles[Math.floor(Math.random() * styles.length)];
 }
 
 // ===============================
-// CASUAL / FRIENDLY CHAT
+// CASUAL CHAT
 // ===============================
 function casualReply(message, lang) {
   if (lang === "tl") {
-    if (["hi", "hello", "hey", "kumusta"].some(w => message.includes(w))) {
+    if (["hi", "hello", "hey", "kumusta"].some(w => message.includes(w)))
       return "Kumusta! 👋 Ako si TalBot. Paano ako makakatulong?";
-    }
-    if (message.includes("salamat")) {
+    if (message.includes("salamat"))
       return "Walang anuman! 💙 Nandito lang ako para tumulong.";
-    }
-    if (message.includes("kamusta ka")) {
+    if (message.includes("kamusta ka"))
       return "Ayos lang ako 😊 Salamat sa pagtatanong!";
-    }
   } else {
-    if (["hi", "hello", "hey"].some(w => message.includes(w))) {
+    if (["hi", "hello", "hey"].some(w => message.includes(w)))
       return "Hello! 👋 I’m TalBot. How can I help you today?";
-    }
-    if (message.includes("thank")) {
+    if (message.includes("thank"))
       return "You’re welcome! 💙 I’m always here to help.";
-    }
-    if (message.includes("how are you")) {
-      return "I’m doing great, thank you! 😊 How can I assist you?";
-    }
+    if (message.includes("how are you"))
+      return "I’m doing great 😊 How can I assist you?";
   }
-
   return null;
 }
 
@@ -94,13 +90,9 @@ app.post("/chat", (req, res) => {
   const message = req.body.message.toLowerCase();
   const lang = detectLanguage(message);
 
-  // 1. Friendly / casual replies
   const casual = casualReply(message, lang);
-  if (casual) {
-    return res.json({ reply: casual });
-  }
+  if (casual) return res.json({ reply: casual });
 
-  // 2. School information (STRICT)
   for (const key in knowledgeBase) {
     const topic = knowledgeBase[key];
     if (topic.keywords.some(k => message.includes(k))) {
@@ -109,7 +101,6 @@ app.post("/chat", (req, res) => {
     }
   }
 
-  // 3. Unknown question (SAFE RESPONSE)
   return res.json({
     reply:
       lang === "tl"
@@ -119,8 +110,8 @@ app.post("/chat", (req, res) => {
 });
 
 // ===============================
-// SERVER START
+// START SERVER
 // ===============================
 app.listen(3000, () => {
-  console.log("TalBot is running at http://localhost:3000");
+  console.log("TalBot running at http://localhost:3000");
 });

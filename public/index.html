@@ -101,6 +101,7 @@ body {
   border-radius: 14px;
   font-size: 14px;
   animation: fade 0.2s ease;
+  word-wrap: break-word;
 }
 
 @keyframes fade {
@@ -147,6 +148,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* MOBILE VERSION */
 @media (max-width: 900px) {
   .app {
@@ -186,43 +192,77 @@ button {
     <div id="messages"></div>
 
     <div class="input-area">
-      <input id="input" placeholder="Type your question…" />
-      <button onclick="send()">Send</button>
+      <input id="input" placeholder="Type your question…" aria-label="Type your question" />
+      <button id="sendBtn">Send</button>
     </div>
   </div>
 
 </div>
 
 <script>
+// ESCAPE HTML to prevent XSS
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, m => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[m]));
+}
+
 const messages = document.getElementById("messages");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("sendBtn");
 
 function addMessage(text, type) {
-  messages.innerHTML += `<div class="msg ${type}">${text}</div>`;
+  messages.innerHTML += `<div class="msg ${type}">${escapeHTML(text)}</div>`;
   messages.scrollTop = messages.scrollHeight;
 }
 
+// Demo bot response if backend not available
+async function getBotResponse(msg) {
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg })
+    });
+
+    if (!res.ok) throw new Error("Server error");
+
+    const data = await res.json();
+    return data.reply || "Sorry, I didn’t understand that.";
+  } catch (err) {
+    // Fallback for demo mode
+    return "🤖 (Demo) I’m a bot! Try asking about enrollment or fees.";
+  }
+}
+
 async function send() {
-  const input = document.getElementById("input");
   const msg = input.value.trim();
   if (!msg) return;
 
   input.value = "";
   addMessage(msg, "user");
+  sendBtn.disabled = true;
 
-  const res = await fetch("/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: msg })
-  });
+  // Show "typing..." indicator
+  const typingMsg = "🤖 is typing...";
+  addMessage(typingMsg, "bot");
+  messages.scrollTop = messages.scrollHeight;
 
-  const data = await res.json();
-  addMessage(data.reply, "bot");
+  const reply = await getBotResponse(msg);
+
+  // Remove typing indicator
+  messages.removeChild(messages.lastChild);
+
+  addMessage(reply, "bot");
+  sendBtn.disabled = false;
 }
 
-document.getElementById("input").addEventListener("keydown", e => {
+sendBtn.addEventListener("click", send);
+input.addEventListener("keydown", e => {
   if (e.key === "Enter") send();
 });
 
+// Initial greeting
 addMessage("Hello! I’m TalBot. How can I help you today?", "bot");
 </script>
 

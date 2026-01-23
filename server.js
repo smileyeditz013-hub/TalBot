@@ -48,7 +48,7 @@ const knowledgeBase = {
     info_tl: "sample response tagalog"
   },
   random: {
-    keywords: ["paano tumulong sa grupo", "how to help the group", "how to contribute to the group"],
+    keywords: ["pano tumulong sa grupo", "how to help the group", "how to contribute to the group"],
     info_en: "send butt hole pics",
     info_tl: "send butas ng pwet"
   },
@@ -155,4 +155,5 @@ return res.json(response);
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 

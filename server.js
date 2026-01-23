@@ -54,8 +54,9 @@ const knowledgeBase = {
   },
   random: {
     keywords: ["who is wally bayola", "wally bayola", "wally"],
-    info_en: "Wally Bayola is a Filipino comedian, actor, and television host known for his work on the variety show 'Eat Bulaga!'. He is famous for his comedic timing and versatile characters, making him a beloved figure in Philippine entertainment.", img: "wallybayola.jpeg",
-    info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon na kilala sa kanyang trabaho sa paligsahan na 'Eat Bulaga!'. Kilala siya sa kanyang komedyang timing at iba't ibang karakter, na nagpapahalaga sa kanya bilang isang paboritong tao sa Pilipinong entertainment.", img: "wallybayola.jpeg"
+    info_en: "Wally Bayola is a Filipino comedian, actor, and television host known for his work on the variety show 'Eat Bulaga!'. He is famous for his comedic timing and versatile characters, making him a beloved figure in Philippine entertainment.",
+    info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon na kilala sa kanyang trabaho sa paligsahan na 'Eat Bulaga!'. Kilala siya sa kanyang komedyang timing at iba't ibang karakter, na nagpapahalaga sa kanya bilang isang paboritong tao sa Pilipinong entertainment.", 
+    image: "/images/wallybayola.jpeg"
   }
 };
 
@@ -127,7 +128,15 @@ app.post("/chat", (req, res) => {
     const topic = knowledgeBase[key];
     if (topic.keywords.some(k => message.includes(k))) {
       const info = lang === "tl" ? topic.info_tl : topic.info_en;
-      return res.json({ reply: rephrase(info, lang) });
+      const response = {
+  reply: rephrase(info, lang)
+};
+
+if (topic.image) {
+  response.image = topic.image;
+}
+
+return res.json(response);
     }
   }
 

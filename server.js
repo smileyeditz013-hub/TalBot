@@ -18,14 +18,14 @@ const knowledgeBase = {
     info_tl: "Upang makapag-enroll, kailangang maghanda ng report card, birth certificate, at pumunta sa registrar."
   },
   fees: {
-    keywords: ["tuition", "fees", "payment", "bayad", "tuition fee"],
-    info_en: "School fees vary depending on the grade level.",
-    info_tl: "Nagkakaiba ang bayarin sa paaralan depende sa antas ng baitang."
+    keywords: ["principal", "school head", "headmaster", "punong guro", "punong-guro"],
+    info_en: "Our principal is Maam Marina Abueva.",
+    info_tl: "Ang aming principal ay si Maam Marina Abueva."
   },
   location: {
     keywords: ["where", "location", "address", "saan", "nasaan"],
-    info_en: "Our school is located at the main campus near the public plaza.",
-    info_tl: "Matatagpuan ang aming paaralan sa pangunahing kampus malapit sa pampublikong plaza."
+    info_en: "Our school is located in Sitio Fori, Talipan, Pagbilao, Quezon.",
+    info_tl: "Matatagpuan ang aming paaralan sa Sitio Fori, Talipan, Pagbilao, Quezon."
   }
 };
 
@@ -105,7 +105,7 @@ app.post("/chat", (req, res) => {
     reply:
       lang === "tl"
         ? "Pasensya na 😅 Maaari lamang akong sumagot ng mga tanong tungkol sa impormasyon ng paaralan."
-        : "Sorry 😅 I can only answer questions related to school information."
+        : "Sorry 😅 I can only answer questions related to school information. You may also try to change the words or keywords you used and check for wrong spellings, since im only a rule based AI i deoend on keywords. Please avoid wrong spellings and typographical errors thanks!"
   });
 });
 
@@ -115,3 +115,4 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+

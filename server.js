@@ -26,6 +26,11 @@ const knowledgeBase = {
     keywords: ["where", "location", "address", "saan", "nasaan"],
     info_en: "Our school is located in Sitio Fori, Talipan, Pagbilao, Quezon.",
     info_tl: "Matatagpuan ang aming paaralan sa Sitio Fori, Talipan, Pagbilao, Quezon."
+  },
+  mobile_legends: {
+    keywords: ["build ni claude", "claude build", "best build for claude"],
+    info_en: "Tough boots, Demon Hunter Sword, Golden Staff, Corrosion Scythe, Malefic Gun, Wind of Nature.",
+    info_tl: "Tough boots, Demon Hunter Sword, Golden Staff, Corrosion Scythe, Malefic Gun, Wind of Nature."
   }
 };
 
@@ -104,7 +109,7 @@ app.post("/chat", (req, res) => {
   return res.json({
     reply:
       lang === "tl"
-        ? "Pasensya na 😅 Maaari lamang akong sumagot ng mga tanong tungkol sa impormasyon ng paaralan."
+        ? "Paumanhin 😅 mga tanong lang na may kinalaman sa impormasyon ng paaralan ang maaari kong sagutin. Maaari mo ring subukang baguhin ang mga salitang o keyword na ginamit mo at tingnan kung may maling baybay, dahil isa lamang akong rule-based na AI at umaasa ako sa mga keyword. Pakiwasan ang maling baybay at mga typographical error. Salamat!"
         : "Sorry 😅 I can only answer questions related to school information. You may also try to change the words or keywords you used and check for wrong spellings, since im only a rule based AI i deoend on keywords. Please avoid wrong spellings and typographical errors thanks!"
   });
 });
@@ -115,4 +120,5 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 

@@ -35,7 +35,7 @@ const knowledgeBase = {
   recipe: {
     keywords: ["adobo recipe", "chicken adobo", "how to cook adobo", "paano magluto ng adobo"],
     info_en: "Chicken adobo is a popular Filipino dish that is easy to prepare and rich in flavor. To cook chicken adobo, you will need one kilogram of chicken cut into pieces, half a cup of soy sauce, half a cup of vinegar, one cup of water, five cloves of crushed garlic, two to three bay leaves, one teaspoon of whole peppercorns, one tablespoon of cooking oil, and optional salt or sugar to taste. Start by marinating the chicken in soy sauce and garlic for about thirty minutes. Heat the oil in a pan and lightly brown the chicken. Add the marinade, water, bay leaves, and peppercorns, then bring it to a boil. Lower the heat and let it simmer for thirty to forty minutes. Add the vinegar and do not stir for two to three minutes. Season according to taste and serve hot with rice.",
-    info_tl: "Ang chicken adobo ay isa sa mga pinakasikat na pagkaing Pilipino at madaling lutuin. Sa pagluluto ng adobo, kailangan ang isang kilong manok na hiniwa, kalahating tasa ng toyo, kalahating tasa ng suka, isang tasa ng tubig, limang butil ng bawang na dinurog, dalawa hanggang tatlong dahon ng laurel, isang kutsarita ng pamintang buo, isang kutsara ng mantika, at opsyonal na asin o asukal ayon sa panlasa. I-marinate ang manok sa toyo at bawang ng tatlumpung minuto. Initin ang mantika at bahagyang iprito ang manok. Idagdag ang marinade, tubig, laurel, at paminta at pakuluin. Hinaan ang apoy at lutuin ng tatlumpu hanggang apatnapung minuto. Idagdag ang suka at huwag haluin ng dalawa hanggang tatlong minuto. Timplahan ayon sa panlasa at ihain kasama ng kanin."
+    info_tl: "<html><body><img src='4ad534cb-6669-4608-81d7-fa80d6b83cc5'/></body></html>  Ang chicken adobo ay isa sa mga pinakasikat na pagkaing Pilipino at madaling lutuin. Sa pagluluto ng adobo, kailangan ang isang kilong manok na hiniwa, kalahating tasa ng toyo, kalahating tasa ng suka, isang tasa ng tubig, limang butil ng bawang na dinurog, dalawa hanggang tatlong dahon ng laurel, isang kutsarita ng pamintang buo, isang kutsara ng mantika, at opsyonal na asin o asukal ayon sa panlasa. I-marinate ang manok sa toyo at bawang ng tatlumpung minuto. Initin ang mantika at bahagyang iprito ang manok. Idagdag ang marinade, tubig, laurel, at paminta at pakuluin. Hinaan ang apoy at lutuin ng tatlumpu hanggang apatnapung minuto. Idagdag ang suka at huwag haluin ng dalawa hanggang tatlong minuto. Timplahan ayon sa panlasa at ihain kasama ng kanin."
   }
 };
 
@@ -125,6 +125,3 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
-
-
-

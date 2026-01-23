@@ -131,7 +131,7 @@ body {
   border-radius: 10px;
 }
 
-/* INPUT AREA (FIXED) */
+/* INPUT AREA */
 .input-area {
   position: sticky;
   bottom: 0;
@@ -176,4 +176,105 @@ button:disabled {
     display: none;
   }
 
-  .chat-panel
+  .chat-panel {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="side-image">
+    <h2>Your School Name</h2>
+    <p>Official School Information Chatbot</p>
+  </div>
+
+  <div class="chat-panel">
+    <div class="header">
+      <h1>🤖 TalBot</h1>
+      <p>Ask about enrollment, fees, and school info</p>
+    </div>
+
+    <div id="messages"></div>
+
+    <div class="input-area">
+      <input id="input" placeholder="Type your question…" />
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, m => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[m]));
+}
+
+const messages = document.getElementById("messages");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("sendBtn");
+
+function addMessage(text, type, image = null) {
+  let html = `<div class="msg ${type}">${escapeHTML(text)}`;
+  if (image) {
+    html += `<br><img src="${image}" loading="lazy" onerror="this.remove()">`;
+  }
+  html += `</div>`;
+  messages.insertAdjacentHTML("beforeend", html);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+async function getBotResponse(msg) {
+  const res = await fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: msg })
+  });
+  return await res.json();
+}
+
+async function send() {
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  input.value = "";
+  addMessage(msg, "user");
+  sendBtn.disabled = true;
+  input.disabled = true;
+
+  addMessage("🤖 is typing...", "bot");
+
+  const data = await getBotResponse(msg);
+
+  messages.removeChild(messages.lastChild);
+  addMessage(data.reply, "bot", data.image);
+
+  sendBtn.disabled = false;
+  input.disabled = false;
+  input.focus();
+}
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    send();
+  }
+});
+
+sendBtn.addEventListener("click", send);
+
+addMessage(
+  "Hello! I’m TalBot. How can I help you today?",
+  "bot",
+  "https://via.placeholder.com/400x200"
+);
+</script>
+
+</body>
+</html>
+

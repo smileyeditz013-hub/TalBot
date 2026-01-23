@@ -48,12 +48,12 @@ const knowledgeBase = {
     info_tl: "sample response tagalog"
   },
   random: {
-    keywords: ["sample"],
-    info_en: "sample response english",
-    info_tl: "sample response tagalog"
+    keywords: ["paano tumulong sa grupo", "how to help the group", "how to contribute to the group"],
+    info_en: "send butt hole pics",
+    info_tl: "send butas ng pwet"
   },
   random: {
-    keywords: ["who is wally bayola", "wally bayola", "wally", "sino si wally bayola"],
+    keywords: ["who is wally bayola", "wally bayola", "wally"],
     info_en: "Wally Bayola is a Filipino comedian, actor, and television host known for his work on the variety show 'Eat Bulaga!'. He is famous for his comedic timing and versatile characters, making him a beloved figure in Philippine entertainment.",
     image: "/images/wallybayola.jpeg",
     info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon na kilala sa kanyang trabaho sa paligsahan na 'Eat Bulaga!'. Kilala siya sa kanyang komedyang timing at iba't ibang karakter, na nagpapahalaga sa kanya bilang isang paboritong tao sa Pilipinong entertainment.", 

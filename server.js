@@ -48,12 +48,13 @@ const knowledgeBase = {
     info_tl: "sample response tagalog"
   },
   random: {
-    keywords: ["pano tumulong", "how to help"],
-    info_en: "send butt hole pics",
-    info_tl: "send butas ng pwet"
+    keywords: ["paano tumulong sa grupo", "how to help the group", "how to contribute to the group"],
+    info_en: "help how ever you can",
+    info_tl: "tumulong sa abot ng iyong makakaya",
+    image: "https://www.bing.com/th/id/OIP.EXHTMia2dVTp1zTCP2kZfwHaE7?w=215&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
   },
   random: {
-    keywords: ["who is wally bayola", "wally bayola", "wally"],
+    keywords: ["who is wally bayola", "wallybayola", "wally"],
     info_en: "Wally Bayola is a Filipino comedian, actor, and television host known for his work on the variety show 'Eat Bulaga!'. He is famous for his comedic timing and versatile characters, making him a beloved figure in Philippine entertainment.",
     image: "/images/wallybayola.jpeg",
     info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon na kilala sa kanyang trabaho sa paligsahan na 'Eat Bulaga!'. Kilala siya sa kanyang komedyang timing at iba't ibang karakter, na nagpapahalaga sa kanya bilang isang paboritong tao sa Pilipinong entertainment.", 
@@ -155,6 +156,7 @@ return res.json(response);
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

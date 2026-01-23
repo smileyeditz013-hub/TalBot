@@ -8,6 +8,9 @@ app.use(express.json());
 // ✅ SERVE THE WEBSITE
 app.use(express.static("public"));
 
+/* ✅ ADD IMAGE SUPPORT (ONLY ADDITION) */
+app.use("/images", express.static("images"));
+
 // ===============================
 // SCHOOL INFORMATION (DO NOT ADD / REMOVE INFO)
 // ===============================
@@ -38,24 +41,9 @@ const knowledgeBase = {
     info_tl: "Ang chicken adobo ay isa sa mga pinakasikat na pagkaing Pilipino at madaling lutuin. Sa pagluluto ng adobo, kailangan ang isang kilong manok na hiniwa, kalahating tasa ng toyo, kalahating tasa ng suka, isang tasa ng tubig, limang butil ng bawang na dinurog, dalawa hanggang tatlong dahon ng laurel, isang kutsarita ng pamintang buo, isang kutsara ng mantika, at opsyonal na asin o asukal ayon sa panlasa. I-marinate ang manok sa toyo at bawang ng tatlumpung minuto. Initin ang mantika at bahagyang iprito ang manok. Idagdag ang marinade, tubig, laurel, at paminta at pakuluin. Hinaan ang apoy at lutuin ng tatlumpu hanggang apatnapung minuto. Idagdag ang suka at huwag haluin ng dalawa hanggang tatlong minuto. Timplahan ayon sa panlasa at ihain kasama ng kanin."
   },
   random: {
-    keywords: ["sample"],
-    info_en: "sample response english",
-    info_tl: "sample response tagalog"
-  },
-  random: {
-    keywords: ["sample"],
-    info_en: "sample response english",
-    info_tl: "sample response tagalog"
-  },
-  random: {
-    keywords: ["sample"],
-    info_en: "sample response english",
-    info_tl: "sample response tagalog"
-  },
-  random: {
     keywords: ["who is wally bayola", "wally bayola", "wally"],
     info_en: "Wally Bayola is a Filipino comedian, actor, and television host known for his work on the variety show 'Eat Bulaga!'. He is famous for his comedic timing and versatile characters, making him a beloved figure in Philippine entertainment.",
-    info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon na kilala sa kanyang trabaho sa paligsahan na 'Eat Bulaga!'. Kilala siya sa kanyang komedyang timing at iba't ibang karakter, na nagpapahalaga sa kanya bilang isang paboritong tao sa Pilipinong entertainment.", 
+    info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon na kilala sa kanyang trabaho sa paligsahan na 'Eat Bulaga!'. Kilala siya sa kanyang komedyang timing at iba't ibang karakter, na nagpapahalaga sa kanya bilang isang paboritong tao sa Pilipinong entertainment.",
     image: "/images/wallybayola.jpeg"
   }
 };
@@ -128,23 +116,19 @@ app.post("/chat", (req, res) => {
     const topic = knowledgeBase[key];
     if (topic.keywords.some(k => message.includes(k))) {
       const info = lang === "tl" ? topic.info_tl : topic.info_en;
-      const response = {
-  reply: rephrase(info, lang)
-};
 
-if (topic.image) {
-  response.image = topic.image;
-}
+      const response = { reply: rephrase(info, lang) };
+      if (topic.image) response.image = topic.image;
 
-return res.json(response);
+      return res.json(response);
     }
   }
 
   return res.json({
     reply:
       lang === "tl"
-        ? "Paumanhin 😅 mga tanong lang na may kinalaman sa impormasyon ng paaralan ang maaari kong sagutin. Maaari mo ring subukang baguhin ang mga salitang o keyword na ginamit mo at tingnan kung may maling baybay, dahil isa lamang akong rule-based na AI at umaasa ako sa mga keyword. Pakiwasan ang maling baybay at mga typographical error. Salamat!"
-        : "Sorry 😅 I can only answer questions related to school information. You may also try to change the words or keywords you used and check for wrong spellings, since im only a rule based AI i deoend on keywords. Please avoid wrong spellings and typographical errors thanks!"
+        ? "Paumanhin 😅 mga tanong lang na may kinalaman sa impormasyon ng paaralan ang maaari kong sagutin."
+        : "Sorry 😅 I can only answer questions related to school information."
   });
 });
 
@@ -154,3 +138,4 @@ return res.json(response);
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+

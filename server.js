@@ -14,9 +14,50 @@ app.use(express.static("public"));
 const knowledgeBase = {
   enrollment: {
     keywords: ["enroll", "enrollment", "register", "admission", "mag enroll", "mag-enroll", "pag enroll"],
-    info_en: "To enroll, students must prepare their report card, birth certificate, and visit the registrar.\n" +
-             "test",
-    info_tl: "Upang makapag-enroll, kailangang maghanda ng report card, birth certificate, at pumunta sa registrar."
+    info_en: "For G12:  Look for g12 teachers, advisers, head teachers-in-charge and bring the following requirements:\n"+
+"For new students.\n"+
+"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"\n"+
+"For old students\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"For Transferees or Balik Aral\n"+
+"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
+"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
+"Ballpen\n"+
+"For G11:  Look for G11 teachers, advisers, headteachers--n-charge and bring the following requirements:\n"+
+"For new students.\n"+
+"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"For old students\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"For Transferees or Balik Aral\n"+
+"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
+"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
+"Ballpen\n\n"+
+"For G7-10: Look for G7-G10 teachers, advisers, headteachers--n-charge and bring the following requirements:\n"+
+"For new students.\n"+
+"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"For old students\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"For Transferees or Balik Aral\n"+
+"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
+"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
+"Ballpen\n\n"+
+"For ALS: Look or contact Mrs. Lorna C. Arenal and bring the following requirements:\n"+
+"Photocopy of PSA Birth Certificate\n"+
+"Photocopy of Married Certificate (if married)\n"+
+"Photocopy of Report Card (if graduated from formal school)\n"+
+"AF5 (if graduated from ALS-JHS)\n"+
+"19 years old and above\n\n"+
+"For SPED: Talipan National Highshcool offers a Special Education for PWD students. TNHS provide special kind of instructions to those students ensuring the ability to learn the same skill and information like a normal students."
   },
   fees: {
     keywords: ["principal", "school head", "headmaster", "punong guro", "punong-guro"],
@@ -209,7 +250,6 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
-
 
 
 

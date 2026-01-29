@@ -47,7 +47,7 @@ const knowledgeBase = {
     info_en: "sample response english",
     info_tl: "sample response tagalog"
   },
-  random: {
+  random1: {
     keywords: ["how do i help", "pano ako tutulong", "tulong", "help"],
     info_en: "help how ever you can",
     info_tl: "tumulong sa abot ng iyong makakaya",
@@ -156,6 +156,7 @@ return res.json(response);
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

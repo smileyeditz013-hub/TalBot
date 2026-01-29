@@ -220,10 +220,14 @@ const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
 
 function addMessage(text, type, image = null) {
-  let html = `<div class="msg ${type}">${escapeHTML(text)}`;
+  const formattedText = escapeHTML(text).replace(/\n/g, "<br>");
+
+  let html = `<div class="msg ${type}">${formattedText}`;
+
   if (image) {
     html += `<br><img src="${image}" loading="lazy" onerror="this.remove()">`;
   }
+
   html += `</div>`;
   messages.insertAdjacentHTML("beforeend", html);
   messages.scrollTop = messages.scrollHeight;
@@ -277,4 +281,3 @@ addMessage(
 
 </body>
 </html>
-

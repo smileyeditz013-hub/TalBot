@@ -42,10 +42,11 @@ const knowledgeBase = {
     info_en: "sample response english",
     info_tl: "sample response tagalog"
   },
-  random: {
-    keywords: ["sample"],
-    info_en: "sample response english",
-    info_tl: "sample response tagalog"
+  random0: {
+    keywords: ["cj"' "cj cantilado", "who is cj cantilado", "sino si cj cantilado"],
+    info_en: "CJ Cantilado is a well-known personality from Gratienza Entertainment, admired for his confidence and creativity. He proudly embraces who he is and currently serves as the research leader of Group 2 (Tali-Bot), where he guides the team with focus and strong leadership.",
+    info_tl: "Si CJ Cantilado ay isang kilalang personalidad mula sa Gratienza Entertainment, na hinahangaan dahil sa kanyang kumpiyansa at pagiging malikhain. Siya ang research leader ng Group 2 (Tali-Bot) at mahusay na gumagabay sa kanyang grupo sa kanilang gawain.",
+    image: "https://i.postimg.cc/9ftDNMr9/IMG-20260129-164442.jpg"
   },
   random1: {
     keywords: ["how do i help", "pano ako tutulong", "tulong", "help"],
@@ -156,6 +157,7 @@ return res.json(response);
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

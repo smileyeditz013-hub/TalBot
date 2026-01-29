@@ -37,13 +37,8 @@ const knowledgeBase = {
     info_en: "Chicken adobo is a popular Filipino dish that is easy to prepare and rich in flavor. To cook chicken adobo, you will need one kilogram of chicken cut into pieces, half a cup of soy sauce, half a cup of vinegar, one cup of water, five cloves of crushed garlic, two to three bay leaves, one teaspoon of whole peppercorns, one tablespoon of cooking oil, and optional salt or sugar to taste. Start by marinating the chicken in soy sauce and garlic for about thirty minutes. Heat the oil in a pan and lightly brown the chicken. Add the marinade, water, bay leaves, and peppercorns, then bring it to a boil. Lower the heat and let it simmer for thirty to forty minutes. Add the vinegar and do not stir for two to three minutes. Season according to taste and serve hot with rice.",
     info_tl: "Ang chicken adobo ay isa sa mga pinakasikat na pagkaing Pilipino at madaling lutuin. Sa pagluluto ng adobo, kailangan ang isang kilong manok na hiniwa, kalahating tasa ng toyo, kalahating tasa ng suka, isang tasa ng tubig, limang butil ng bawang na dinurog, dalawa hanggang tatlong dahon ng laurel, isang kutsarita ng pamintang buo, isang kutsara ng mantika, at opsyonal na asin o asukal ayon sa panlasa. I-marinate ang manok sa toyo at bawang ng tatlumpung minuto. Initin ang mantika at bahagyang iprito ang manok. Idagdag ang marinade, tubig, laurel, at paminta at pakuluin. Hinaan ang apoy at lutuin ng tatlumpu hanggang apatnapung minuto. Idagdag ang suka at huwag haluin ng dalawa hanggang tatlong minuto. Timplahan ayon sa panlasa at ihain kasama ng kanin."
   },
-  random: {
-    keywords: ["sample"],
-    info_en: "sample response english",
-    info_tl: "sample response tagalog"
-  },
-  random0: {
-    keywords: ["cj"' "cj cantilado", "who is cj cantilado", "sino si cj cantilado"],
+  random11: {
+    keywords: ["cj", "cj cantilado", "who is cj cantilado", "sino si cj cantilado"],
     info_en: "CJ Cantilado is a well-known personality from Gratienza Entertainment, admired for his confidence and creativity. He proudly embraces who he is and currently serves as the research leader of Group 2 (Tali-Bot), where he guides the team with focus and strong leadership.",
     info_tl: "Si CJ Cantilado ay isang kilalang personalidad mula sa Gratienza Entertainment, na hinahangaan dahil sa kanyang kumpiyansa at pagiging malikhain. Siya ang research leader ng Group 2 (Tali-Bot) at mahusay na gumagabay sa kanyang grupo sa kanilang gawain.",
     image: "https://i.postimg.cc/9ftDNMr9/IMG-20260129-164442.jpg"
@@ -157,6 +152,7 @@ return res.json(response);
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

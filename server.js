@@ -39,7 +39,7 @@ const knowledgeBase = {
 "Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
 "Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
 "Ballpen\n\n"+
-"For G7-10: Look for G7-G10 teachers, advisers, headteachers--n-charge and bring the following requirements:\n"+
+"For G7-10: Look for G7-G10 teachers, advisers, headteachers in charge and bring the following requirements:\n"+
 "For new students.\n"+
 "Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
 "Original copy of student's report card (SF9)\n"+
@@ -250,6 +250,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

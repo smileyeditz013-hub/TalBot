@@ -14,7 +14,8 @@ app.use(express.static("public"));
 const knowledgeBase = {
   enrollment: {
     keywords: ["enroll", "enrollment", "register", "admission", "mag enroll", "mag-enroll", "pag enroll"],
-    info_en: "To enroll, students must prepare their report card, birth certificate, and visit the registrar.",
+    info_en: "To enroll, students must prepare their report card, birth certificate, and visit the registrar."+
+             "test",
     info_tl: "Upang makapag-enroll, kailangang maghanda ng report card, birth certificate, at pumunta sa registrar."
   },
   fees: {

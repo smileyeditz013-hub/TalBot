@@ -13,14 +13,15 @@
   position: fixed;
   bottom: 90px;
   left: 20px;
-  width: 120px;
-  height: 120px;
+  width: 409px;
+  height: 527px;
   background-image: url("/images/talbot-sprite.png");
   background-repeat: no-repeat;
   background-size: 2048px 1582px;
   z-index: 99999;
   pointer-events: none;
-  background-color: rgba(255,0,0,0.1); /* TEMPORARY: Red tint to debug - remove after it works */
+  transform: scale(0.25);
+  transform-origin: bottom left;
 }
 
 /* Idle */
@@ -30,8 +31,8 @@
 }
 
 @keyframes idle {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,100% { transform: scale(0.25) translateY(0); }
+  50% { transform: scale(0.25) translateY(-6px); }
 }
 
 /* Walk animation (row 1) */
@@ -55,19 +56,15 @@
 }
 
 @keyframes jumpUp {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-40px); }
-  100% { transform: translateY(0); }
+  0% { transform: scale(0.25) translateY(0); }
+  50% { transform: scale(0.25) translateY(-160px); }
+  100% { transform: scale(0.25) translateY(0); }
 }
 
 /* Hide on mobile */
 @media (max-width: 900px) {
   #talbot {
-    display: block;
-    width: 80px;
-    height: 80px;
-    background-size: 1365px 1054px;
-    bottom: 80px;
+    display: none;
   }
 }
 
@@ -339,7 +336,7 @@ sendBtn.addEventListener("click", send);
 /* ================= TALBOT MASCOT LOGIC ================= */
 const talbot = document.getElementById("talbot");
 
-let direction = 1; // 1 = right, -1 = left
+let direction = 1;
 let pos = 20;
 
 function walkTalbot() {
@@ -351,12 +348,12 @@ function walkTalbot() {
 
     if (pos > window.innerWidth - 140) {
       direction = -1;
-      talbot.style.transform = "scaleX(-1)";
+      talbot.style.transform = "scale(0.25) scaleX(-1)";
     }
 
     if (pos < 20) {
       direction = 1;
-      talbot.style.transform = "scaleX(1)";
+      talbot.style.transform = "scale(0.25) scaleX(1)";
     }
   }, 30);
 }
@@ -368,10 +365,8 @@ function jumpTalbot() {
   }, 650);
 }
 
-// Start walking after load
 setTimeout(walkTalbot, 2000);
 
-// Hook jump to SEND
 const originalSend = send;
 send = async function () {
   jumpTalbot();

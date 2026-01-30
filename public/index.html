@@ -13,58 +13,61 @@
   position: fixed;
   bottom: 90px;
   left: 20px;
-  width: 120px;
-  height: 120px;
+  width: 409px; /* Single frame width: 2048 / 5 */
+  height: 527px; /* Single frame height: 1582 / 3 */
   background-image: url("/images/talbot-sprite.png");
   background-repeat: no-repeat;
-  background-size: 600px 360px; /* 5 columns x 3 rows */
+  background-size: 2048px 1582px; /* Actual sprite dimensions */
   z-index: 9999;
   pointer-events: none;
+  transform-origin: bottom left;
 }
 
-/* Idle */
+/* Idle - first frame of first row */
 #talbot.idle {
+  background-position: 0px 0px;
   animation: idle 2.5s infinite ease-in-out;
 }
 
 @keyframes idle {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,100% { transform: translateY(0) scale(0.25); }
+  50% { transform: translateY(-6px) scale(0.25); }
 }
 
-/* Walk animation (row 1) */
+/* Walk animation (row 1, frames 1-4) */
 #talbot.walk {
-  animation: walk 1s steps(4) infinite;
+  animation: walk 0.8s steps(4) infinite, walkScale 0s;
 }
 
 @keyframes walk {
   from { background-position: 0px 0px; }
-  to { background-position: -480px 0px; }
+  to { background-position: -1636px 0px; } /* 4 frames * 409px */
 }
 
-/* Jump frames (row 2) */
+@keyframes walkScale {
+  to { transform: scale(0.25); }
+}
+
+/* Jump frames (row 2, frames 1-4) */
 #talbot.jump {
   animation: jumpFrames 0.6s steps(4) forwards, jumpUp 0.6s ease;
 }
 
 @keyframes jumpFrames {
-  from { background-position: 0px -120px; }
-  to { background-position: -480px -120px; }
+  from { background-position: 0px -527px; }
+  to { background-position: -1636px -527px; }
 }
 
 @keyframes jumpUp {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-40px); }
-  100% { transform: translateY(0); }
+  0% { transform: translateY(0) scale(0.25); }
+  50% { transform: translateY(-40px) scale(0.25); }
+  100% { transform: translateY(0) scale(0.25); }
 }
 
-/* Smaller on mobile */
+/* Smaller on mobile - hide TalBot on small screens */
 @media (max-width: 900px) {
   #talbot {
-    width: 80px;
-    height: 80px;
-    background-size: 400px 240px;
-    bottom: 80px;
+    display: none; /* Hide on mobile to prevent off-screen issues */
   }
 }
 
@@ -247,7 +250,7 @@ button:disabled {
 
 <div class="app">
   <!-- TalBot animated mascot -->
-<div id="talbot" class="idle"></div>
+  <div id="talbot" class="idle"></div>
 
   <div class="side-image">
     <h2>Talipan National High School</h2>
@@ -263,8 +266,8 @@ button:disabled {
     <div id="messages"></div>
 
     <div class="input-area">
-      <input id="input" placeholder="Type your question…" />
-      <button id="sendBtn">Send</button>
+      <input id="input" placeholder="Type your question…" aria-label="Chat input" />
+      <button id="sendBtn" aria-label="Send message">Send</button>
     </div>
   </div>
 
@@ -287,7 +290,7 @@ function addMessage(text, type, image = null) {
   let html = `<div class="msg ${type}">${formattedText}`;
 
   if (image) {
-    html += `<br><img src="${image}" loading="lazy" onerror="this.remove()">`;
+    html += `<br><img src="${escapeHTML(image)}" loading="lazy" onerror="this.remove()">`;
   }
 
   html += `</div>`;
@@ -333,27 +336,35 @@ input.addEventListener("keydown", (e) => {
 });
 
 sendBtn.addEventListener("click", send);
+
 /* ================= TALBOT MASCOT LOGIC ================= */
 const talbot = document.getElementById("talbot");
 
 let direction = 1; // 1 = right, -1 = left
 let pos = 20;
+let walkInterval = null;
 
 function walkTalbot() {
+  // Don't walk on mobile
+  if (window.innerWidth <= 900) return;
+  
+  // Prevent multiple intervals
+  if (walkInterval) return;
+  
   talbot.className = "walk";
 
-  setInterval(() => {
+  walkInterval = setInterval(() => {
     pos += direction * 1.2;
     talbot.style.left = pos + "px";
 
     if (pos > window.innerWidth - 140) {
       direction = -1;
-      talbot.style.transform = "scaleX(-1)";
+      talbot.style.transform = "scaleX(-1) scale(0.25)";
     }
 
     if (pos < 20) {
       direction = 1;
-      talbot.style.transform = "scaleX(1)";
+      talbot.style.transform = "scaleX(1) scale(0.25)";
     }
   }, 30);
 }
@@ -375,10 +386,10 @@ send = async function () {
   return originalSend();
 };
 
+// Remove placeholder image from welcome message
 addMessage(
-  "Hello! I’m TalBot. How can I help you today?",
-  "bot",
-  "https://via.placeholder.com/400x200"
+  "Hello! I'm TalBot. How can I help you today?",
+  "bot"
 );
 </script>
 

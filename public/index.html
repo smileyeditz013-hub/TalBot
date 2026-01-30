@@ -17,9 +17,10 @@
   height: 120px;
   background-image: url("/images/talbot-sprite.png");
   background-repeat: no-repeat;
-  background-size: 2048px 1582px; /* FIXED: Actual sprite dimensions */
-  z-index: 9999;
+  background-size: 2048px 1582px;
+  z-index: 99999;
   pointer-events: none;
+  background-color: rgba(255,0,0,0.1); /* TEMPORARY: Red tint to debug - remove after it works */
 }
 
 /* Idle */
@@ -40,7 +41,7 @@
 
 @keyframes walk {
   from { background-position: 0px 0px; }
-  to { background-position: -1636px 0px; } /* FIXED: 4 frames × 409px = 1636px */
+  to { background-position: -1636px 0px; }
 }
 
 /* Jump frames (row 2) */
@@ -49,7 +50,7 @@
 }
 
 @keyframes jumpFrames {
-  from { background-position: 0px -527px; } /* FIXED: Row 2 starts at -527px */
+  from { background-position: 0px -527px; }
   to { background-position: -1636px -527px; }
 }
 
@@ -59,23 +60,14 @@
   100% { transform: translateY(0); }
 }
 
-/* Smaller on mobile */
+/* Hide on mobile */
 @media (max-width: 900px) {
   #talbot {
+    display: block;
     width: 80px;
     height: 80px;
-    background-size: 1365px 1054px; /* Scaled down proportionally */
+    background-size: 1365px 1054px;
     bottom: 80px;
-  }
-  
-  @keyframes walk {
-    from { background-position: 0px 0px; }
-    to { background-position: -1092px 0px; } /* Adjusted for mobile scale */
-  }
-  
-  @keyframes jumpFrames {
-    from { background-position: 0px -351px; }
-    to { background-position: -1092px -351px; }
   }
 }
 

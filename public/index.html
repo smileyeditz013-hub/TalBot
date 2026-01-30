@@ -11,21 +11,21 @@
   /* ================= TALBOT MASCOT ================= */
 #talbot {
   position: fixed;
-  bottom: 20px;
+  bottom: 90px;
   left: 20px;
-  width: 102px; /* (2048 / 5) * 0.25 = 409 * 0.25 */
-  height: 132px; /* (1582 / 3) * 0.25 = 527 * 0.25 */
-  background-image: url('talbot-sprite.png');
+  width: 120px;
+  height: 120px;
+  background-image: url("talbot-sprite.png");
   background-repeat: no-repeat;
-  background-size: 512px 395px; /* 2048 * 0.25, 1582 * 0.25 */
+  background-size: 2048px 1582px; /* FIXED: Actual sprite dimensions */
   z-index: 9999;
   pointer-events: none;
 }
 
-/* Idle - first frame of first row */
+/* Idle */
 #talbot.idle {
-  background-position: 0px 0px;
   animation: idle 2.5s infinite ease-in-out;
+  background-position: 0px 0px;
 }
 
 @keyframes idle {
@@ -33,24 +33,24 @@
   50% { transform: translateY(-6px); }
 }
 
-/* Walk animation (row 1, frames 1-4) */
+/* Walk animation (row 1) */
 #talbot.walk {
-  animation: walk 0.8s steps(4) infinite;
+  animation: walk 1s steps(4) infinite;
 }
 
 @keyframes walk {
   from { background-position: 0px 0px; }
-  to { background-position: -409px 0px; } /* 4 frames * 102.25px ≈ 409px */
+  to { background-position: -1636px 0px; } /* FIXED: 4 frames × 409px = 1636px */
 }
 
-/* Jump frames (row 2, frames 1-4) */
+/* Jump frames (row 2) */
 #talbot.jump {
   animation: jumpFrames 0.6s steps(4) forwards, jumpUp 0.6s ease;
 }
 
 @keyframes jumpFrames {
-  from { background-position: 0px -132px; }
-  to { background-position: -409px -132px; }
+  from { background-position: 0px -527px; } /* FIXED: Row 2 starts at -527px */
+  to { background-position: -1636px -527px; }
 }
 
 @keyframes jumpUp {
@@ -59,30 +59,23 @@
   100% { transform: translateY(0); }
 }
 
-/* Eating animation (row 3, frames 1-3) */
-#talbot.eat {
-  animation: eatFrames 1.2s steps(3) forwards;
-}
-
-@keyframes eatFrames {
-  from { background-position: 0px -264px; } /* row 3 start */
-  to { background-position: -307px -264px; } /* 3 frames */
-}
-
-/* Sleep animation (row 3, frames 4-5) */
-#talbot.sleep {
-  animation: sleepFrames 2s steps(2) infinite;
-}
-
-@keyframes sleepFrames {
-  from { background-position: -409px -264px; } /* 4th frame of row 3 */
-  to { background-position: -512px -264px; } /* 5th frame */
-}
-
-/* Hide on mobile */
+/* Smaller on mobile */
 @media (max-width: 900px) {
   #talbot {
-    display: none;
+    width: 80px;
+    height: 80px;
+    background-size: 1365px 1054px; /* Scaled down proportionally */
+    bottom: 80px;
+  }
+  
+  @keyframes walk {
+    from { background-position: 0px 0px; }
+    to { background-position: -1092px 0px; } /* Adjusted for mobile scale */
+  }
+  
+  @keyframes jumpFrames {
+    from { background-position: 0px -351px; }
+    to { background-position: -1092px -351px; }
   }
 }
 
@@ -265,7 +258,7 @@ button:disabled {
 
 <div class="app">
   <!-- TalBot animated mascot -->
-  <div id="talbot" class="idle"></div>
+<div id="talbot" class="idle"></div>
 
   <div class="side-image">
     <h2>Talipan National High School</h2>
@@ -281,8 +274,8 @@ button:disabled {
     <div id="messages"></div>
 
     <div class="input-area">
-      <input id="input" placeholder="Type your question…" aria-label="Chat input" />
-      <button id="sendBtn" aria-label="Send message">Send</button>
+      <input id="input" placeholder="Type your question…" />
+      <button id="sendBtn">Send</button>
     </div>
   </div>
 
@@ -351,30 +344,20 @@ input.addEventListener("keydown", (e) => {
 });
 
 sendBtn.addEventListener("click", send);
-
 /* ================= TALBOT MASCOT LOGIC ================= */
 const talbot = document.getElementById("talbot");
 
 let direction = 1; // 1 = right, -1 = left
 let pos = 20;
-let walkInterval = null;
-let actionTimeout = null;
 
 function walkTalbot() {
-  // Don't walk on mobile
-  if (window.innerWidth <= 900) return;
-  
-  // Prevent multiple intervals
-  if (walkInterval) return;
-  
   talbot.className = "walk";
 
-  walkInterval = setInterval(() => {
-    pos += direction * 2;
+  setInterval(() => {
+    pos += direction * 1.2;
     talbot.style.left = pos + "px";
 
-    // Check boundaries (account for mascot width)
-    if (pos > window.innerWidth - 120) {
+    if (pos > window.innerWidth - 140) {
       direction = -1;
       talbot.style.transform = "scaleX(-1)";
     }
@@ -386,58 +369,15 @@ function walkTalbot() {
   }, 30);
 }
 
-function stopWalking() {
-  if (walkInterval) {
-    clearInterval(walkInterval);
-    walkInterval = null;
-  }
-}
-
 function jumpTalbot() {
   talbot.className = "jump";
   setTimeout(() => {
-    if (walkInterval) {
-      talbot.className = "walk";
-    } else {
-      talbot.className = "idle";
-    }
+    talbot.className = "idle";
   }, 650);
 }
 
-function eatTalbot() {
-  stopWalking();
-  talbot.className = "eat";
-  setTimeout(() => {
-    talbot.className = "idle";
-    setTimeout(walkTalbot, 1000);
-  }, 1200);
-}
-
-function sleepTalbot() {
-  stopWalking();
-  talbot.className = "sleep";
-  setTimeout(() => {
-    talbot.className = "idle";
-    setTimeout(walkTalbot, 1000);
-  }, 4000);
-}
-
-function randomAction() {
-  const actions = [eatTalbot, sleepTalbot, jumpTalbot];
-  const randomIdx = Math.floor(Math.random() * actions.length);
-  actions[randomIdx]();
-  
-  // Schedule next random action in 8-15 seconds
-  const nextDelay = 8000 + Math.random() * 7000;
-  actionTimeout = setTimeout(randomAction, nextDelay);
-}
-
 // Start walking after load
-setTimeout(() => {
-  walkTalbot();
-  // Start random actions after 5 seconds
-  setTimeout(randomAction, 5000);
-}, 2000);
+setTimeout(walkTalbot, 2000);
 
 // Hook jump to SEND
 const originalSend = send;
@@ -446,7 +386,6 @@ send = async function () {
   return originalSend();
 };
 
-// Welcome message
 addMessage(
   "Hello! I'm TalBot. How can I help you today?",
   "bot"

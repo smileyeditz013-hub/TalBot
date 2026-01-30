@@ -11,16 +11,15 @@
   /* ================= TALBOT MASCOT ================= */
 #talbot {
   position: fixed;
-  bottom: 90px;
+  bottom: 20px;
   left: 20px;
-  width: 409px; /* Single frame width: 2048 / 5 */
-  height: 527px; /* Single frame height: 1582 / 3 */
-  background-image: url("/images/talbot-sprite.png");
+  width: 102px; /* (2048 / 5) * 0.25 = 409 * 0.25 */
+  height: 132px; /* (1582 / 3) * 0.25 = 527 * 0.25 */
+  background-image: url('talbot-sprite.png');
   background-repeat: no-repeat;
-  background-size: 2048px 1582px; /* Actual sprite dimensions */
+  background-size: 512px 395px; /* 2048 * 0.25, 1582 * 0.25 */
   z-index: 9999;
   pointer-events: none;
-  transform-origin: bottom left;
 }
 
 /* Idle - first frame of first row */
@@ -30,22 +29,18 @@
 }
 
 @keyframes idle {
-  0%,100% { transform: translateY(0) scale(0.25); }
-  50% { transform: translateY(-6px) scale(0.25); }
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* Walk animation (row 1, frames 1-4) */
 #talbot.walk {
-  animation: walk 0.8s steps(4) infinite, walkScale 0s;
+  animation: walk 0.8s steps(4) infinite;
 }
 
 @keyframes walk {
   from { background-position: 0px 0px; }
-  to { background-position: -1636px 0px; } /* 4 frames * 409px */
-}
-
-@keyframes walkScale {
-  to { transform: scale(0.25); }
+  to { background-position: -409px 0px; } /* 4 frames * 102.25px ≈ 409px */
 }
 
 /* Jump frames (row 2, frames 1-4) */
@@ -54,20 +49,40 @@
 }
 
 @keyframes jumpFrames {
-  from { background-position: 0px -527px; }
-  to { background-position: -1636px -527px; }
+  from { background-position: 0px -132px; }
+  to { background-position: -409px -132px; }
 }
 
 @keyframes jumpUp {
-  0% { transform: translateY(0) scale(0.25); }
-  50% { transform: translateY(-40px) scale(0.25); }
-  100% { transform: translateY(0) scale(0.25); }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
+  100% { transform: translateY(0); }
 }
 
-/* Smaller on mobile - hide TalBot on small screens */
+/* Eating animation (row 3, frames 1-3) */
+#talbot.eat {
+  animation: eatFrames 1.2s steps(3) forwards;
+}
+
+@keyframes eatFrames {
+  from { background-position: 0px -264px; } /* row 3 start */
+  to { background-position: -307px -264px; } /* 3 frames */
+}
+
+/* Sleep animation (row 3, frames 4-5) */
+#talbot.sleep {
+  animation: sleepFrames 2s steps(2) infinite;
+}
+
+@keyframes sleepFrames {
+  from { background-position: -409px -264px; } /* 4th frame of row 3 */
+  to { background-position: -512px -264px; } /* 5th frame */
+}
+
+/* Hide on mobile */
 @media (max-width: 900px) {
   #talbot {
-    display: none; /* Hide on mobile to prevent off-screen issues */
+    display: none;
   }
 }
 
@@ -343,6 +358,7 @@ const talbot = document.getElementById("talbot");
 let direction = 1; // 1 = right, -1 = left
 let pos = 20;
 let walkInterval = null;
+let actionTimeout = null;
 
 function walkTalbot() {
   // Don't walk on mobile
@@ -354,30 +370,74 @@ function walkTalbot() {
   talbot.className = "walk";
 
   walkInterval = setInterval(() => {
-    pos += direction * 1.2;
+    pos += direction * 2;
     talbot.style.left = pos + "px";
 
-    if (pos > window.innerWidth - 140) {
+    // Check boundaries (account for mascot width)
+    if (pos > window.innerWidth - 120) {
       direction = -1;
-      talbot.style.transform = "scaleX(-1) scale(0.25)";
+      talbot.style.transform = "scaleX(-1)";
     }
 
     if (pos < 20) {
       direction = 1;
-      talbot.style.transform = "scaleX(1) scale(0.25)";
+      talbot.style.transform = "scaleX(1)";
     }
   }, 30);
+}
+
+function stopWalking() {
+  if (walkInterval) {
+    clearInterval(walkInterval);
+    walkInterval = null;
+  }
 }
 
 function jumpTalbot() {
   talbot.className = "jump";
   setTimeout(() => {
-    talbot.className = "idle";
+    if (walkInterval) {
+      talbot.className = "walk";
+    } else {
+      talbot.className = "idle";
+    }
   }, 650);
 }
 
+function eatTalbot() {
+  stopWalking();
+  talbot.className = "eat";
+  setTimeout(() => {
+    talbot.className = "idle";
+    setTimeout(walkTalbot, 1000);
+  }, 1200);
+}
+
+function sleepTalbot() {
+  stopWalking();
+  talbot.className = "sleep";
+  setTimeout(() => {
+    talbot.className = "idle";
+    setTimeout(walkTalbot, 1000);
+  }, 4000);
+}
+
+function randomAction() {
+  const actions = [eatTalbot, sleepTalbot, jumpTalbot];
+  const randomIdx = Math.floor(Math.random() * actions.length);
+  actions[randomIdx]();
+  
+  // Schedule next random action in 8-15 seconds
+  const nextDelay = 8000 + Math.random() * 7000;
+  actionTimeout = setTimeout(randomAction, nextDelay);
+}
+
 // Start walking after load
-setTimeout(walkTalbot, 2000);
+setTimeout(() => {
+  walkTalbot();
+  // Start random actions after 5 seconds
+  setTimeout(randomAction, 5000);
+}, 2000);
 
 // Hook jump to SEND
 const originalSend = send;
@@ -386,7 +446,7 @@ send = async function () {
   return originalSend();
 };
 
-// Remove placeholder image from welcome message
+// Welcome message
 addMessage(
   "Hello! I'm TalBot. How can I help you today?",
   "bot"

@@ -13,69 +13,87 @@
   position: fixed;
   bottom: 20px;
   left: 20px;
-  width: 256px;
-  height: 256px;
+  width: 410px;
+  height: 527px;
   background-image: url("/images/talbot-sprite.png");
   background-repeat: no-repeat;
-  background-size: 1024px 791px;
+  background-size: 2050px 1581px;
   z-index: 99999;
   pointer-events: none;
-  image-rendering: pixelated;
+  transform: scale(0.3);
+  transform-origin: bottom left;
+  image-rendering: -webkit-optimize-contrast;
 }
 
-/* Idle - first frame */
+/* Idle - frame 1 */
 #talbot.idle {
-  background-position: 0px 0px;
-  animation: idle 2.5s infinite ease-in-out;
+  background-position: -10px -5px;
+  animation: idleBob 2.5s infinite ease-in-out;
 }
 
-@keyframes idle {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+@keyframes idleBob {
+  0%,100% { transform: scale(0.3) translateY(0); }
+  50% { transform: scale(0.3) translateY(-10px); }
 }
 
-/* Walk animation (row 1, 4 frames) */
+/* Walk animation - manually positioned frames */
 #talbot.walk {
-  animation: walk 0.8s steps(4) infinite;
+  animation: walkAnim 0.6s steps(1) infinite;
 }
 
-@keyframes walk {
-  0% { background-position: 0px 0px; }
-  100% { background-position: -1024px 0px; }
+@keyframes walkAnim {
+  0% { background-position: -10px -5px; }
+  25% { background-position: -420px -5px; }
+  50% { background-position: -830px -5px; }
+  75% { background-position: -1240px -5px; }
+  100% { background-position: -10px -5px; }
 }
 
-/* Jump frames (row 2, 4 frames) */
+/* Jump animation - row 2 */
 #talbot.jump {
-  animation: jumpFrames 0.6s steps(4) 1, jumpMotion 0.6s ease-out 1;
+  animation: jumpAnim 0.8s steps(1) 1, jumpMove 0.8s ease-out 1;
 }
 
-@keyframes jumpFrames {
-  0% { background-position: 0px -264px; }
-  100% { background-position: -1024px -264px; }
+@keyframes jumpAnim {
+  0% { background-position: -10px -540px; }
+  25% { background-position: -420px -540px; }
+  50% { background-position: -830px -540px; }
+  75% { background-position: -1240px -540px; }
+  100% { background-position: -10px -540px; }
 }
 
-@keyframes jumpMotion {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-50px); }
-  100% { transform: translateY(0); }
+@keyframes jumpMove {
+  0% { transform: scale(0.3) translateY(0); }
+  40% { transform: scale(0.3) translateY(-150px); }
+  100% { transform: scale(0.3) translateY(0); }
+}
+
+/* Eat animation - row 3 first 3 frames */
+#talbot.eat {
+  animation: eatAnim 1.2s steps(1) 1;
+}
+
+@keyframes eatAnim {
+  0% { background-position: -10px -1060px; }
+  33% { background-position: -420px -1060px; }
+  66% { background-position: -830px -1060px; }
+  100% { background-position: -10px -1060px; }
+}
+
+/* Sleep animation - row 3 last 2 frames */
+#talbot.sleep {
+  animation: sleepAnim 1.5s steps(1) infinite;
+}
+
+@keyframes sleepAnim {
+  0%, 49% { background-position: -1240px -1060px; }
+  50%, 100% { background-position: -1650px -1060px; }
 }
 
 /* Hide on mobile */
 @media (max-width: 900px) {
   #talbot {
-    width: 128px;
-    height: 128px;
-    background-size: 512px 395px;
-  }
-  
-  @keyframes walk {
-    0% { background-position: 0px 0px; }
-    100% { background-position: -512px 0px; }
-  }
-  
-  @keyframes jumpFrames {
-    0% { background-position: 0px -132px; }
-    100% { background-position: -512px -132px; }
+    display: none;
   }
 }
 
@@ -350,6 +368,7 @@ const talbot = document.getElementById("talbot");
 let direction = 1;
 let pos = 20;
 let walkInterval = null;
+let actionTimeout = null;
 
 function walkTalbot() {
   if (window.innerWidth <= 900) return;
@@ -361,28 +380,68 @@ function walkTalbot() {
     pos += direction * 2;
     talbot.style.left = pos + "px";
 
-    if (pos > window.innerWidth - 280) {
+    if (pos > window.innerWidth - 140) {
       direction = -1;
-      talbot.style.transform = "scaleX(-1)";
+      talbot.style.transform = "scale(0.3) scaleX(-1)";
     }
 
     if (pos < 20) {
       direction = 1;
-      talbot.style.transform = "scaleX(1)";
+      talbot.style.transform = "scale(0.3) scaleX(1)";
     }
   }, 30);
 }
 
-function jumpTalbot() {
-  const currentTransform = talbot.style.transform || "";
-  talbot.className = "jump";
-  setTimeout(() => {
-    talbot.className = walkInterval ? "walk" : "idle";
-    talbot.style.transform = currentTransform;
-  }, 600);
+function stopWalking() {
+  if (walkInterval) {
+    clearInterval(walkInterval);
+    walkInterval = null;
+  }
 }
 
-setTimeout(walkTalbot, 2000);
+function jumpTalbot() {
+  const wasWalking = walkInterval !== null;
+  talbot.className = "jump";
+  setTimeout(() => {
+    if (wasWalking) {
+      talbot.className = "walk";
+    } else {
+      talbot.className = "idle";
+    }
+  }, 800);
+}
+
+function eatTalbot() {
+  stopWalking();
+  talbot.className = "eat";
+  setTimeout(() => {
+    talbot.className = "idle";
+    setTimeout(walkTalbot, 1000);
+  }, 1200);
+}
+
+function sleepTalbot() {
+  stopWalking();
+  talbot.className = "sleep";
+  setTimeout(() => {
+    talbot.className = "idle";
+    setTimeout(walkTalbot, 1000);
+  }, 4500);
+}
+
+function randomAction() {
+  const actions = [jumpTalbot, eatTalbot, sleepTalbot];
+  const randomIdx = Math.floor(Math.random() * actions.length);
+  actions[randomIdx]();
+  
+  const nextDelay = 10000 + Math.random() * 10000;
+  actionTimeout = setTimeout(randomAction, nextDelay);
+}
+
+setTimeout(() => {
+  walkTalbot();
+  setTimeout(randomAction, 8000);
+}, 2000);
 
 const originalSend = send;
 send = async function () {

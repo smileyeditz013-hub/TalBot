@@ -13,7 +13,7 @@ app.use(express.static("public"));
 // ===============================
 const knowledgeBase = {
   enrollment: {
-    keywords: ["enroll", "enrollment", "register", "admission", "mag enroll", "mag-enroll", "pag enroll"],
+    keywords: ["enroll", "how to enroll", "enrollment", "register", "admission", "mag enroll", "mag-enroll", "pag enroll"],
     info_en: "For G12:  Look for g12 teachers, advisers, head teachers-in-charge and bring the following requirements:\n"+
 "For new students.\n"+
 "Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
@@ -86,11 +86,27 @@ const knowledgeBase = {
     info_en: "Chicken adobo is a popular Filipino dish that is easy to prepare and rich in flavor...",
     info_tl: "Ang chicken adobo ay isa sa mga pinakasikat na pagkaing Pilipino at madaling lutuin..."
   },
-  random11: {
-    keywords: ["cj", "cj cantilado", "who is cj cantilado", "sino si cj cantilado"],
-    info_en: "Currently, CJ Cantilado is a well-known GAY personality from Gratienza Entertainment...",
-    info_tl: "Si CJ Cantilado ay isang baklang ulikba na personalidad mula sa Gratienza Entertainment...",
-    image: "https://i.postimg.cc/9ftDNMr9/IMG-20260129-164442.jpg"
+  organization1: {
+    keywords: ["tdlc", "talipan drum and lyre corps", "drum and lyre corps", "talipan drum corps", "talipan band", "talipan banda"],
+    info_en: "Talipan Drum and lyre is an organization composed of different students who loves to play in a band. They play different instrument such as different kind of drums, lyres, and marimbas while the other members are majorettes and flags/ color guards.\n\n",
+    "Band Advisers: Ma'am Mylene P. Lucila\n"+
+    "               Ma'am Joana E. Salumbides\n"+
+    "Band Master:   Christian Joshua Ayala\n"+
+    "Trainors:      Glady Mae Belbis\n"+
+    "               Joshua L. Hosana\n"+
+    "               Cindy Margarete\n"+
+    "               Michael Eubanas\n"+
+    "               Justine Merto\n"+,
+    info_tl: "Ang Talipan Drum and Lyre ay isang organisasyon na binubuo ng iba't ibang mag-aaral na nagsasayang ng oras sa paglalaro ng band. Naglalaro sila ng iba't ibang instrumentong tulad ng iba't ibang uri ng tambol, lyres, at marimbas habang ang iba pang miyembro ay mga majorette at mga flag/color guards.\n\n"+
+    "Band Advisers: Ma'am Mylene P. Lucila\n"+
+    "               Ma'am Joana E. Salumbides\n"+
+    "Band Master:   Christian Joshua Ayala\n"+
+    "Trainors:      Glady Mae Belbis\n"+
+    "               Joshua L. Hosana\n"+
+    "               Cindy Margarete\n"+
+    "               Michael Eubanas\n"+
+    "               Justine Merto\n",
+    image: "https://i.postimg.cc/v8gZ9Y9J/FB-IMG-1769916076188.jpg"
   },
   random1: {
     keywords: ["how do i help", "pano ako tutulong", "tulong", "help"],
@@ -250,6 +266,8 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
+
 
 
 

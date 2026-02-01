@@ -88,7 +88,7 @@ const knowledgeBase = {
   },
   organization1: {
     keywords: ["tdlc", "talipan drum and lyre corps", "drum and lyre corps", "talipan drum corps", "talipan band", "talipan banda"],
-    info_en: "Talipan Drum and lyre is an organization composed of different students who loves to play in a band. They play different instrument such as different kind of drums, lyres, and marimbas while the other members are majorettes and flags/ color guards.\n\n",
+    info_en: "Talipan Drum and lyre is an organization composed of different students who loves to play in a band. They play different instrument such as different kind of drums, lyres, and marimbas while the other members are majorettes and flags/ color guards.\n\n"+
     "Band Advisers: Ma'am Mylene P. Lucila\n"+
     "               Ma'am Joana E. Salumbides\n"+
     "Band Master:   Christian Joshua Ayala\n"+
@@ -96,7 +96,7 @@ const knowledgeBase = {
     "               Joshua L. Hosana\n"+
     "               Cindy Margarete\n"+
     "               Michael Eubanas\n"+
-    "               Justine Merto\n"+,
+    "               Justine Merto\n",
     info_tl: "Ang Talipan Drum and Lyre ay isang organisasyon na binubuo ng iba't ibang mag-aaral na nagsasayang ng oras sa paglalaro ng band. Naglalaro sila ng iba't ibang instrumentong tulad ng iba't ibang uri ng tambol, lyres, at marimbas habang ang iba pang miyembro ay mga majorette at mga flag/color guards.\n\n"+
     "Band Advisers: Ma'am Mylene P. Lucila\n"+
     "               Ma'am Joana E. Salumbides\n"+
@@ -266,6 +266,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

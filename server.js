@@ -15,48 +15,48 @@ const knowledgeBase = {
   enrollment: {
     keywords: ["enroll", "how to enroll", "enrollment", "register", "admission", "mag enroll", "mag-enroll", "pag enroll"],
     info_en: "For G12:  Look for g12 teachers, advisers, head teachers-in-charge and bring the following requirements:\n"+
-"For new students.\n"+
-"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
-"Original copy of student's report card (SF9)\n"+
-"Ballpen\n"+
+"For new students.\n"+
+"Clear Photocopy of Student's birth certificate (PSA/NSO)\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
 "\n"+
-"For old students\n"+
-"Original copy of student's report card (SF9)\n"+
-"Ballpen\n"+
-"For Transferees or Balik Aral\n"+
-"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
-"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
-"Ballpen\n"+
+"For old students\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
+"For Transferees or Balik Aral\n"+
+"Clear Photocopy of Student's birth certificate (PSA/NSO)\n"+
+"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
+"Ballpen\n"+
 "For G11:  Look for G11 teachers, advisers, headteachers--n-charge and bring the following requirements:\n"+
 "For new students.\n"+
-"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
-"Original copy of student's report card (SF9)\n"+
-"Ballpen\n"+
+"Clear Photocopy of Student's birth certificate (PSA/NSO)\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
 "For old students\n"+
-"Original copy of student's report card (SF9)\n"+
-"Ballpen\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
 "For Transferees or Balik Aral\n"+
-"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
-"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
-"Ballpen\n\n"+
+"Clear Photocopy of Student's birth certificate (PSA/NSO)\n"+
+"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
+"Ballpen\n\n"+
 "For G7-10: Look for G7-G10 teachers, advisers, headteachers in charge and bring the following requirements:\n"+
 "For new students.\n"+
-"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
-"Original copy of student's report card (SF9)\n"+
-"Ballpen\n"+
+"Clear Photocopy of Student's birth certificate (PSA/NSO)\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
 "For old students\n"+
-"Original copy of student's report card (SF9)\n"+
-"Ballpen\n"+
+"Original copy of student's report card (SF9)\n"+
+"Ballpen\n"+
 "For Transferees or Balik Aral\n"+
-"Clear Photocopy of Student’s birth certificate (PSA/NSO)\n"+
-"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
-"Ballpen\n\n"+
+"Clear Photocopy of Student's birth certificate (PSA/NSO)\n"+
+"Original Copy of Students report card (SF9) or A&E/PEPT/PVT Result or Certificate \n"+
+"Ballpen\n\n"+
 "For ALS: Look or contact Mrs. Lorna C. Arenal and bring the following requirements:\n"+
-"Photocopy of PSA Birth Certificate\n"+
-"Photocopy of Married Certificate (if married)\n"+
-"Photocopy of Report Card (if graduated from formal school)\n"+
-"AF5 (if graduated from ALS-JHS)\n"+
-"19 years old and above\n\n"+
+"Photocopy of PSA Birth Certificate\n"+
+"Photocopy of Married Certificate (if married)\n"+
+"Photocopy of Report Card (if graduated from formal school)\n"+
+"AF5 (if graduated from ALS-JHS)\n"+
+"19 years old and above\n\n"+
 "For SPED: Talipan National Highshcool offers a Special Education for PWD students. TNHS provide special kind of instructions to those students ensuring the ability to learn the same skill and information like a normal students."
   },
   principal: {
@@ -109,7 +109,7 @@ const knowledgeBase = {
     image: "https://i.postimg.cc/v8gZ9Y9J/FB-IMG-1769916076188.jpg"
   },
   random1: {
-    keywords: ["how do i help", "pano ako tutulong", "tulong", "help"],
+    keywords: ["how do i help", "pano ako tutulong", "tulong"],
     info_en: "Help however you can.",
     info_tl: "Tumulong sa abot ng iyong makakaya.",
     image: "https://www.bing.com/th/id/OIP.EXHTMia2dVTp1zTCP2kZfwHaE7?w=215&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
@@ -178,7 +178,7 @@ const knowledgeBase = {
    "•	Knee-length/ long dresses and skirts.\n"+
    "•	Footwear\n"+
    "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes.\n"+
-   "Things that aren’t allowed to wear inside the campus:\n"+
+   "Things that aren't allowed to wear inside the campus:\n"+
    "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits.\n"+
    "•	Ripped jeans, shorts or miniskirts\n"+
    "•	Slippers, Flipflops\n",
@@ -214,7 +214,7 @@ const knowledgeBase = {
    "•	Knee-length/ long dresses and skirts.\n"+
    "•	Footwear\n"+
    "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes.\n"+
-   "Things that aren’t allowed to wear inside the campus:\n"+
+   "Things that aren't allowed to wear inside the campus:\n"+
    "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits.\n"+
    "•	Ripped jeans, shorts or miniskirts\n"+
    "•	Slippers, Flipflops\n",
@@ -238,7 +238,7 @@ const knowledgeBase = {
    "12pm until 6 pm",
    image: ""
   },
-  building: {
+  building_shs: {
     keywords: ["shs building", "senior high school building"],
     info_en: "SHS building is located at the right corner of the campus, it is near the entrance of Talipan. It is the first fourth-floored building here in our campus. There are plenty of classrooms in this building but because of the rise of Senior high school enrollees, the school implement a shift system among SHS students, the schedule of students may vary on their curriculum level. G11 students class schedule is at 6 am to 12 am on Monday to Friday while G12 students class schedule is at 12pm to 6 pm on Monday to Friday.\n\n"+
    "on the first floor of the building you can find three teacher's faculty and classrooms such as:\n"+
@@ -268,90 +268,48 @@ const knowledgeBase = {
    "For G12 section- HUMSS LSL, HUMSS JRA, HUMSS JDD, and HUMSS RJL",
     image: ""
   },
-  building1: {
+  building_jica: {
     keywords: ["jica building", "grade 9 building"],
     info_en: "JICA building is building that is consisting of Grade 9 classrooms such as G9 ACR, G9 JPM, G9 EL, G9 AED, G9 EV, G9 KC, G9 AM, G9 MKL, and G9 ABD. To go to JICA building, head towards the middle of the campus or the acacia and you can see the covered court, when you reach the covered court, you can see it in the left side of the covered court.",
     info_tl: "JICA building is building that is consisting of Grade 9 classrooms such as G9 ACR, G9 JPM, G9 EL, G9 AED, G9 EV, G9 KC, G9 AM, G9 MKL, and G9 ABD. To go to JICA building, head towards the middle of the campus or the acacia and you can see the covered court, when you reach the covered court, you can see it in the left side of the covered court.",
     image: ""
   },
-  building2: {
+  building_nantes: {
     keywords: ["nantes building", "grade 8 building"],
     info_en: "Nantes building is a two-storey building that is consisting of grade 8 classrooms. On the first floor the classrooms of G8 ROM, G8 MID and G8 ARN is located while on the second floor G8 MRL, G8 PS and G8 ICJ is located. To go to Nantes building head towards the acacia and you can see the N-type logo on that building.",
     info_tl: "Nantes building is a two-storey building that is consisting of grade 8 classrooms. On the first floor the classrooms of G8 ROM, G8 MID and G8 ARN is located while on the second floor G8 MRL, G8 PS and G8 ICJ is located. To go to Nantes building head towards the acacia and you can see the N-type logo on that building.",
     image: ""
   },
-  building3: {
+  building_portes: {
     keywords: ["portes building"],
     info_en: "Portes building is a two-storey building that is consisting of two single rooms. On the first floor you can find the MFL and AQG classroom. To go to this building head towards to acacia and you can find a two-storey building in the middle.",
     info_tl: "Portes building is a two-storey building that is consisting of two single rooms. On the first floor you can find the MFL and AQG classroom. To go to this building head towards to acacia and you can find a two-storey building in the middle.",
     image: ""
   },
-  building: {
+  building_napocor: {
     keywords: ["napocor building", "grade 7 building"],
     info_en: "Napocor building is a building that is consisting of 5 rooms. There are 4 grade 7 classrooms such as G7 ILH, G7 JM, G7 JC and G7 CED, and one science faculty. To go to this building head towards the acacia and you can see the covered court, got to covered court and it is located at the right corner of it, it is placed higher than ground floor.",
     info_tl: "Napocor building is a building that is consisting of 5 rooms. There are 4 grade 7 classrooms such as G7 ILH, G7 JM, G7 JC and G7 CED, and one science faculty. To go to this building head towards the acacia and you can see the covered court, got to covered court and it is located at the right corner of it, it is placed higher than ground floor.",
     image: ""
   },
-  building: {
+  building_esf: {
     keywords: ["esf building", "grade 10 building"],
     info_en: "ESF building is a two-storey building consisting of grade 10 classrooms. On the first floor G10 ACA, G10 MEC, G10 MUM, G10 IRA and the math faculty is located, while on the second floor you can find G10 JMP, G10 CAS, G10 MAS, and G10 MGO. To go to this building head towards the acacia and you can see a building that had an embedded letters says the name of out campus.",
     info_tl: "ESF building is a two-storey building consisting of grade 10 classrooms. On the first floor G10 ACA, G10 MEC, G10 MUM, G10 IRA and the math faculty is located, while on the second floor you can find G10 JMP, G10 CAS, G10 MAS, and G10 MGO. To go to this building head towards the acacia and you can see a building that had an embedded letters says the name of out campus.",
     image: ""
   },
-  building: {
+  building_pilot: {
     keywords: ["pilot building"],
     info_en: "Pilot building, this building is a two-storey building consisting of 4 classrooms that is room for the excelling students of 4 different JHS curriculum. To go to this building from the entrance walk straight until you see a building that has a stair.",
     info_tl: "Pilot building, this building is a two-storey building consisting of 4 classrooms that is room for the excelling students of 4 different JHS curriculum. To go to this building from the entrance walk straight until you see a building that has a stair.",
     image: ""
   },
-  building: {
+  building_deped: {
     keywords: ["deped admins building", "admin building", "principal office", "mapeh faculty", "mapeh room", "guidance office", "news room", "el ang talipeno news room", "finance office", "school clinic", "clinic", "records office", "records", "smb office"],
     info_en: "DepEd ADMINS BUILDING\n"+
-   "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño’s newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal’s office.",
+   "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño's newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal's office.",
     info_tl: "DepEd ADMINS BUILDING\n"+
-   "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño’s newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal’s office.",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
-    image: ""
-  },
-  building: {
-    keywords: [""],
-    info_en: "",
-    info_tl: "",
+   "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño's newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal's office.",
     image: ""
   }
 };
@@ -411,7 +369,7 @@ function rephrase(info, lang) {
   const en = [
     `Sure! ${info}`,
     `No problem 😊 ${info}`,
-    `Here’s what I know: ${info}`,
+    `Here's what I know: ${info}`,
     `${info} Let me know if you need more help.`,
     `Happy to help! ${info}`
   ];
@@ -429,19 +387,22 @@ function rephrase(info, lang) {
 }
 
 // ===============================
-// CASUAL CHAT
+// CASUAL CHAT - FIXED
 // ===============================
 function casualReply(message, lang) {
+  // Use word boundaries to avoid matching "hi" in "high"
+  const words = message.split(/\s+/);
+  
   if (lang === "tl") {
-    if (["hi", "hello", "hey", "kumusta"].some(w => message.includes(w)))
+    if (words.some(w => ["hi", "hello", "hey", "kumusta"].includes(w)))
       return "Kumusta! 👋 Ako si TalBot. Paano ako makakatulong?";
-    if (message.includes("salamat"))
+    if (words.some(w => ["salamat", "thank", "thanks"].includes(w)))
       return "Walang anuman! 💙 Nandito lang ako para tumulong.";
   } else {
-    if (["hi", "hello", "hey"].some(w => message.includes(w)))
-      return "Hello! 👋 I’m TalBot. How can I help you today?";
-    if (message.includes("thank"))
-      return "You’re welcome! 💙 I’m always here to help.";
+    if (words.some(w => ["hi", "hello", "hey"].includes(w)))
+      return "Hello! 👋 I'm TalBot. How can I help you today?";
+    if (words.some(w => ["thank", "thanks"].includes(w)))
+      return "You're welcome! 💙 I'm always here to help.";
   }
   return null;
 }
@@ -460,22 +421,22 @@ app.post("/chat", (req, res) => {
   let bestScore = 0;
 
   for (const key in knowledgeBase) {
-  const topic = knowledgeBase[key];
+    const topic = knowledgeBase[key];
 
-  for (const kw of topic.keywords) {
-    let score = similarity(message, normalize(kw));
+    for (const kw of topic.keywords) {
+      let score = similarity(message, normalize(kw));
 
-    // ✅ NEW: exact keyword inside long sentence
-    if (message.includes(normalize(kw))) {
-      score = 1;
-    }
+      // ✅ FIXED: exact keyword match
+      if (message.includes(normalize(kw))) {
+        score = 1;
+      }
 
-    if (score > bestScore && score > 0.6) {
-      bestScore = score;
-      bestMatch = topic;
+      if (score > bestScore && score > 0.6) {
+        bestScore = score;
+        bestMatch = topic;
+      }
     }
   }
-}
 
   if (bestMatch) {
     const info = lang === "tl" ? bestMatch.info_tl : bestMatch.info_en;
@@ -484,20 +445,12 @@ app.post("/chat", (req, res) => {
     return res.json(response);
   }
 
-  // SAFE LOCATION FALLBACK
-  if (message.includes("where") || message.includes("saan")) {
-    return res.json({
-      reply: lang === "tl"
-        ? "Paumanhin 😅 wala pa akong impormasyon tungkol sa lokasyong iyon."
-        : "Sorry 😅 I don’t have information about that location yet."
-    });
-  }
-
+  // FALLBACK
   return res.json({
     reply:
       lang === "tl"
-        ? "Paumanhin 😅 mga tanong lang na may kinalaman sa impormasyon ng paaralan ang maaari kong sagutin."
-        : "Sorry 😅 I can only answer questions related to school information."
+        ? "Paumanhin 😅 wala pa akong impormasyon tungkol diyan. Magtanong lang tungkol sa paaralan."
+        : "Sorry 😅 I don't have information about that yet. Please ask questions about school information."
   });
 });
 
@@ -507,9 +460,6 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
-
-
-
 
 
 

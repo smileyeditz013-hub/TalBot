@@ -147,96 +147,212 @@ const knowledgeBase = {
   rules_and_regulations: {
    keywords: ["rules, regulations", "rules and regulation", "school rules", "school regulations", "patakaran ng paaralan", "mga patakaran ng paaralan"],
    info_en: "Rules and Regulation:\nProtocols:\nTalipan National High School's rules and regulations require students to wear a complete and proper uniform, adhere to a No ID, No Entry policy, and maintain an appropriate haircut and hair color/n."+
-   "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering./n"+
-   "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense./n"+
-   "Uniform:/n"+
-   "Students must wear the complete and proper school uniform when entering the campus./n"+
-   "No ID, No Entry:/n"+
-   "A strict policy mandates that students must have their ID to enter the campus./n"+
-   "Haircut and Hair Color:/n"+
-   "Students are expected to observe appropriate and proper haircuts and hair colors."+
-   "Prohibited Conduct:/n"+
-   "Liquor and Smoking: Coming to school under the influence of liquor or smoking inside the campus is strictly prohibited./n"+
-   "Jumping Over the Fence: Students are not allowed to jump over the fence./n"+
-   "Anti-Littering/Loitering: Actions such as littering and loitering within the school campus are not permitted./n"+
-   "Initiating Conflicts: Starting fights or conflicts within the school grounds is forbidden./n"+
+   "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering.\n"+
+   "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense.\n"+
+   "Uniform:\n"+
+   "Students must wear the complete and proper school uniform when entering the campus.\n"+
+   "No ID, No Entry:\n"+
+   "A strict policy mandates that students must have their ID to enter the campus.\n"+
+   "Haircut and Hair Color:\n"+
+   "Students are expected to observe appropriate and proper haircuts and hair colors.\n"+
+   "Prohibited Conduct:\n"+
+   "Liquor and Smoking: Coming to school under the influence of liquor or smoking inside the campus is strictly prohibited.\n"+
+   "Jumping Over the Fence: Students are not allowed to jump over the fence.\n"+
+   "Anti-Littering/Loitering: Actions such as littering and loitering within the school campus are not permitted.\n"+
+   "Initiating Conflicts: Starting fights or conflicts within the school grounds is forbidden.\n"+
    "Disciplinary Measures: \n"+
-   "First Offense:"+
-   "For certain offenses (e.g., being under the influence of liquor, smoking, jumping over the fence, initiating conflicts), the student is reported to the guidance office and required to sign a promissory note./n"+
-   "Second Offense:"+
-   "A fine of ₱500.00 is imposed for a second offense./n"+
-   "Third Offense:/n"+
-   "Students may face a suspension from school for seven (7) days for a third offense./n"+
-   "Initiating Conflicts:/n"+
-   "For initiating conflicts, a parent and child will be called to the guidance office for disciplinary action for the first offense./n"+
-   "Dress Code:/n"+
-   "All students must wear proper attire and uniform but there is the list of dresses that are allowed inside the campus:/n"+
-   "•	Top Dresses:/n"+
-   "•	T – shirts or Poloshirt , Blouses or Cropped Tops nit exposing belly skin/n"+
-   "•	Long sleeves/n"+
-   "•	Pants or Jeans/n"+
-   "•	Knee-length/ long dresses and skirts./n"+
-   "•	Footwear/n"+
-   "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes./n"+
-   "Things that aren’t allowed to wear inside the campus:/n"+
-   "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits./n"+
-   "•	Ripped jeans, shorts or miniskirts/n"+
-   "•	Slippers, Flipflops/n",
+   "First Offense:\n"+
+   "For certain offenses (e.g., being under the influence of liquor, smoking, jumping over the fence, initiating conflicts), the student is reported to the guidance office and required to sign a promissory note.\n"+
+   "Second Offense:\n"+
+   "A fine of ₱500.00 is imposed for a second offense.\n"+
+   "Third Offense:\n"+
+   "Students may face a suspension from school for seven (7) days for a third offense.\n"+
+   "Initiating Conflicts:\n"+
+   "For initiating conflicts, a parent and child will be called to the guidance office for disciplinary action for the first offense.\n"+
+   "Dress Code:\n"+
+   "All students must wear proper attire and uniform but there is the list of dresses that are allowed inside the campus:\n"+
+   "•	Top Dresses:\n"+
+   "•	T – shirts or Poloshirt , Blouses or Cropped Tops nit exposing belly skin\n"+
+   "•	Long sleeves\n"+
+   "•	Pants or Jeans\n"+
+   "•	Knee-length/ long dresses and skirts.\n"+
+   "•	Footwear\n"+
+   "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes.\n"+
+   "Things that aren’t allowed to wear inside the campus:\n"+
+   "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits.\n"+
+   "•	Ripped jeans, shorts or miniskirts\n"+
+   "•	Slippers, Flipflops\n",
    info_tl: "Rules and Regulation:\nProtocols:\nTalipan National High School's rules and regulations require students to wear a complete and proper uniform, adhere to a No ID, No Entry policy, and maintain an appropriate haircut and hair color/n."+
-   "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering./n"+
-   "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense./n"+
-   "Uniform:/n"+
-   "Students must wear the complete and proper school uniform when entering the campus./n"+
-   "No ID, No Entry:/n"+
-   "A strict policy mandates that students must have their ID to enter the campus./n"+
-   "Haircut and Hair Color:/n"+
-   "Students are expected to observe appropriate and proper haircuts and hair colors."+
-   "Prohibited Conduct:/n"+
-   "Liquor and Smoking: Coming to school under the influence of liquor or smoking inside the campus is strictly prohibited./n"+
-   "Jumping Over the Fence: Students are not allowed to jump over the fence./n"+
-   "Anti-Littering/Loitering: Actions such as littering and loitering within the school campus are not permitted./n"+
-   "Initiating Conflicts: Starting fights or conflicts within the school grounds is forbidden./n"+
+   "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering.\n"+
+   "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense.\n"+
+   "Uniform:\n"+
+   "Students must wear the complete and proper school uniform when entering the campus.\n"+
+   "No ID, No Entry:\n"+
+   "A strict policy mandates that students must have their ID to enter the campus.\n"+
+   "Haircut and Hair Color:\n"+
+   "Students are expected to observe appropriate and proper haircuts and hair colors.\n"+
+   "Prohibited Conduct:\n"+
+   "Liquor and Smoking: Coming to school under the influence of liquor or smoking inside the campus is strictly prohibited.\n"+
+   "Jumping Over the Fence: Students are not allowed to jump over the fence.\n"+
+   "Anti-Littering/Loitering: Actions such as littering and loitering within the school campus are not permitted.\n"+
+   "Initiating Conflicts: Starting fights or conflicts within the school grounds is forbidden.\n"+
    "Disciplinary Measures: \n"+
-   "First Offense:"+
-   "For certain offenses (e.g., being under the influence of liquor, smoking, jumping over the fence, initiating conflicts), the student is reported to the guidance office and required to sign a promissory note./n"+
-   "Second Offense:"+
-   "A fine of ₱500.00 is imposed for a second offense./n"+
-   "Third Offense:/n"+
-   "Students may face a suspension from school for seven (7) days for a third offense./n"+
-   "Initiating Conflicts:/n"+
-   "For initiating conflicts, a parent and child will be called to the guidance office for disciplinary action for the first offense./n"+
-   "Dress Code:/n"+
-   "All students must wear proper attire and uniform but there is the list of dresses that are allowed inside the campus:/n"+
-   "•	Top Dresses:/n"+
-   "•	T – shirts or Poloshirt , Blouses or Cropped Tops nit exposing belly skin/n"+
-   "•	Long sleeves/n"+
-   "•	Pants or Jeans/n"+
-   "•	Knee-length/ long dresses and skirts./n"+
-   "•	Footwear/n"+
-   "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes./n"+
-   "Things that aren’t allowed to wear inside the campus:/n"+
-   "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits./n"+
-   "•	Ripped jeans, shorts or miniskirts/n"+
-   "•	Slippers, Flipflops/n",
+   "First Offense:\n"+
+   "For certain offenses (e.g., being under the influence of liquor, smoking, jumping over the fence, initiating conflicts), the student is reported to the guidance office and required to sign a promissory note.\n"+
+   "Second Offense:\n"+
+   "A fine of ₱500.00 is imposed for a second offense.\n"+
+   "Third Offense:\n"+
+   "Students may face a suspension from school for seven (7) days for a third offense.\n"+
+   "Initiating Conflicts:\n"+
+   "For initiating conflicts, a parent and child will be called to the guidance office for disciplinary action for the first offense.\n"+
+   "Dress Code:\n"+
+   "All students must wear proper attire and uniform but there is the list of dresses that are allowed inside the campus:\n"+
+   "•	Top Dresses:\n"+
+   "•	T – shirts or Poloshirt , Blouses or Cropped Tops nit exposing belly skin\n"+
+   "•	Long sleeves\n"+
+   "•	Pants or Jeans\n"+
+   "•	Knee-length/ long dresses and skirts.\n"+
+   "•	Footwear\n"+
+   "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes.\n"+
+   "Things that aren’t allowed to wear inside the campus:\n"+
+   "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits.\n"+
+   "•	Ripped jeans, shorts or miniskirts\n"+
+   "•	Slippers, Flipflops\n",
    image: ""
   },
   schedule: {
    keywords: ["class schedule", "school schedule", "class time", "school time", "oras ng klase", "iskedyul ng klase"],
-   info_en: "Talipan Class Schedules/n/n"+
-   "For Grade 7 to 10:/n"+
-   "7am to 12pm, then an hour break then the class resumes at 1pm until 4pm/n/n"+
-   "For G11:/n"+
-   "6am to 12 pm, it is affected by the shift system among SHS students/n/n"+
-   "For G12:/n"+
+   info_en: "Talipan Class Schedules\n\n"+
+   "For Grade 7 to 10:\n"+
+   "7am to 12pm, then an hour break then the class resumes at 1pm until 4pm\n\n"+
+   "For G11:\n"+
+   "6am to 12 pm, it is affected by the shift system among SHS students\n\n"+
+   "For G12:\n"+
    "12pm until 6 pm",
-   info_tl: "Talipan Class Schedules/n/n"+
-   "For Grade 7 to 10:/n"+
-   "7am to 12pm, then an hour break then the class resumes at 1pm until 4pm/n/n"+
-   "For G11:/n"+
-   "6am to 12 pm, it is affected by the shift system among SHS students/n/n"+
-   "For G12:/n"+
+   info_tl: "Talipan Class Schedules\n\n"+
+   "For Grade 7 to 10:\n"+
+   "7am to 12pm, then an hour break then the class resumes at 1pm until 4pm\n\n"+
+   "For G11:\n"+
+   "6am to 12 pm, it is affected by the shift system among SHS students\n\n"+
+   "For G12:\n"+
    "12pm until 6 pm",
    image: ""
+  },
+  building: {
+    keywords: ["shs building", "senior high school building"],
+    info_en: "SHS building is located at the right corner of the campus, it is near the entrance of Talipan. It is the first fourth-floored building here in our campus. There are plenty of classrooms in this building but because of the rise of Senior high school enrollees, the school implement a shift system among SHS students, the schedule of students may vary on their curriculum level. G11 students class schedule is at 6 am to 12 am on Monday to Friday while G12 students class schedule is at 12pm to 6 pm on Monday to Friday.\n\n"+
+   "on the first floor of the building you can find three teacher's faculty and classrooms such as:\n"+
+   "For G11 section - TVL EPAS JSR, STEM ARO, HUMMS LBD and STEM JD.\n"+
+   "For G12 section - TVL EPAS JZM, STEM SCP, HUMMS GDP and STEM CPS.\n"+
+   "On the second floor of the building you can find three teacher's faculty and classrooms such as:\n"+
+   "For G11 section- TVL HE NAA, TVL HE WMS, and TVL HE LEP\n"+
+   "For G12 section- TVL HE LAT, TVL HE JBP, and TVL HE KOA\n"+
+   "On the third floor of the building you can find three teachers' faculty and classrooms such as:\n"+
+   "For G11 section- ABM MSD, HUMSS JLE, and TVL CSS JDC\n"+
+   "For G12 section- ABM VLP, HUMSS DR, and TVL CSS LAV\n"+
+   "On the fourth floor you can find two teachers' faculty and 4 classrooms such as:\n"+
+   "For G11 section- HUMMS JQP, HUMMS ABZ, HUMSS SMR, and HUMSS IDG\n"+
+   "For G12 section- HUMSS LSL, HUMSS JRA, HUMSS JDD, and HUMSS RJL",
+    info_tl: "SHS building is located at the right corner of the campus, it is near the entrance of Talipan. It is the first fourth-floored building here in our campus. There are plenty of classrooms in this building but because of the rise of Senior high school enrollees, the school implement a shift system among SHS students, the schedule of students may vary on their curriculum level. G11 students class schedule is at 6 am to 12 am on Monday to Friday while G12 students class schedule is at 12pm to 6 pm on Monday to Friday.\n\n"+
+   "on the first floor of the building you can find three teacher's faculty and classrooms such as:\n"+
+   "For G11 section - TVL EPAS JSR, STEM ARO, HUMMS LBD and STEM JD.\n"+
+   "For G12 section - TVL EPAS JZM, STEM SCP, HUMMS GDP and STEM CPS.\n"+
+   "On the second floor of the building you can find three teacher's faculty and classrooms such as:\n"+
+   "For G11 section- TVL HE NAA, TVL HE WMS, and TVL HE LEP\n"+
+   "For G12 section- TVL HE LAT, TVL HE JBP, and TVL HE KOA\n"+
+   "On the third floor of the building you can find three teachers' faculty and classrooms such as:\n"+
+   "For G11 section- ABM MSD, HUMSS JLE, and TVL CSS JDC\n"+
+   "For G12 section- ABM VLP, HUMSS DR, and TVL CSS LAV\n"+
+   "On the fourth floor you can find two teachers' faculty and 4 classrooms such as:\n"+
+   "For G11 section- HUMMS JQP, HUMMS ABZ, HUMSS SMR, and HUMSS IDG\n"+
+   "For G12 section- HUMSS LSL, HUMSS JRA, HUMSS JDD, and HUMSS RJL",
+    image: ""
+  },
+  building1: {
+    keywords: ["jica building", "grade 9 building"],
+    info_en: "JICA building is building that is consisting of Grade 9 classrooms such as G9 ACR, G9 JPM, G9 EL, G9 AED, G9 EV, G9 KC, G9 AM, G9 MKL, and G9 ABD. To go to JICA building, head towards the middle of the campus or the acacia and you can see the covered court, when you reach the covered court, you can see it in the left side of the covered court.",
+    info_tl: "JICA building is building that is consisting of Grade 9 classrooms such as G9 ACR, G9 JPM, G9 EL, G9 AED, G9 EV, G9 KC, G9 AM, G9 MKL, and G9 ABD. To go to JICA building, head towards the middle of the campus or the acacia and you can see the covered court, when you reach the covered court, you can see it in the left side of the covered court.",
+    image: ""
+  },
+  building2: {
+    keywords: ["nantes building", "grade 8 building"],
+    info_en: "Nantes building is a two-storey building that is consisting of grade 8 classrooms. On the first floor the classrooms of G8 ROM, G8 MID and G8 ARN is located while on the second floor G8 MRL, G8 PS and G8 ICJ is located. To go to Nantes building head towards the acacia and you can see the N-type logo on that building.",
+    info_tl: "Nantes building is a two-storey building that is consisting of grade 8 classrooms. On the first floor the classrooms of G8 ROM, G8 MID and G8 ARN is located while on the second floor G8 MRL, G8 PS and G8 ICJ is located. To go to Nantes building head towards the acacia and you can see the N-type logo on that building.",
+    image: ""
+  },
+  building3: {
+    keywords: ["portes building"],
+    info_en: "Portes building is a two-storey building that is consisting of two single rooms. On the first floor you can find the MFL and AQG classroom. To go to this building head towards to acacia and you can find a two-storey building in the middle.",
+    info_tl: "Portes building is a two-storey building that is consisting of two single rooms. On the first floor you can find the MFL and AQG classroom. To go to this building head towards to acacia and you can find a two-storey building in the middle.",
+    image: ""
+  },
+  building: {
+    keywords: ["napocor building", "grade 7 building"],
+    info_en: "Napocor building is a building that is consisting of 5 rooms. There are 4 grade 7 classrooms such as G7 ILH, G7 JM, G7 JC and G7 CED, and one science faculty. To go to this building head towards the acacia and you can see the covered court, got to covered court and it is located at the right corner of it, it is placed higher than ground floor.",
+    info_tl: "Napocor building is a building that is consisting of 5 rooms. There are 4 grade 7 classrooms such as G7 ILH, G7 JM, G7 JC and G7 CED, and one science faculty. To go to this building head towards the acacia and you can see the covered court, got to covered court and it is located at the right corner of it, it is placed higher than ground floor.",
+    image: ""
+  },
+  building: {
+    keywords: ["esf building", "grade 10 building"],
+    info_en: "ESF building is a two-storey building consisting of grade 10 classrooms. On the first floor G10 ACA, G10 MEC, G10 MUM, G10 IRA and the math faculty is located, while on the second floor you can find G10 JMP, G10 CAS, G10 MAS, and G10 MGO. To go to this building head towards the acacia and you can see a building that had an embedded letters says the name of out campus.",
+    info_tl: "ESF building is a two-storey building consisting of grade 10 classrooms. On the first floor G10 ACA, G10 MEC, G10 MUM, G10 IRA and the math faculty is located, while on the second floor you can find G10 JMP, G10 CAS, G10 MAS, and G10 MGO. To go to this building head towards the acacia and you can see a building that had an embedded letters says the name of out campus.",
+    image: ""
+  },
+  building: {
+    keywords: ["pilot building"],
+    info_en: "Pilot building, this building is a two-storey building consisting of 4 classrooms that is room for the excelling students of 4 different JHS curriculum. To go to this building from the entrance walk straight until you see a building that has a stair.",
+    info_tl: "Pilot building, this building is a two-storey building consisting of 4 classrooms that is room for the excelling students of 4 different JHS curriculum. To go to this building from the entrance walk straight until you see a building that has a stair.",
+    image: ""
+  },
+  building: {
+    keywords: ["deped admins building", "admin building", "principal office", "mapeh faculty", "mapeh room", "guidance office", "news room", "el ang talipeno news room", "finance office", "school clinic", "clinic", "records office", "records", "smb office"],
+    info_en: "DepEd ADMINS BUILDING\n"+
+   "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño’s newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal’s office.",
+    info_tl: "DepEd ADMINS BUILDING\n"+
+   "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño’s newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal’s office.",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
+  },
+  building: {
+    keywords: [""],
+    info_en: "",
+    info_tl: "",
+    image: ""
   }
 };
 
@@ -344,15 +460,22 @@ app.post("/chat", (req, res) => {
   let bestScore = 0;
 
   for (const key in knowledgeBase) {
-    const topic = knowledgeBase[key];
-    for (const kw of topic.keywords) {
-      const score = similarity(message, normalize(kw));
-      if (score > bestScore && score > 0.6) {
-        bestScore = score;
-        bestMatch = topic;
-      }
+  const topic = knowledgeBase[key];
+
+  for (const kw of topic.keywords) {
+    let score = similarity(message, normalize(kw));
+
+    // ✅ NEW: exact keyword inside long sentence
+    if (message.includes(normalize(kw))) {
+      score = 1;
+    }
+
+    if (score > bestScore && score > 0.6) {
+      bestScore = score;
+      bestMatch = topic;
     }
   }
+}
 
   if (bestMatch) {
     const info = lang === "tl" ? bestMatch.info_tl : bestMatch.info_en;
@@ -384,6 +507,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

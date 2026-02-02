@@ -387,21 +387,25 @@ function rephrase(info, lang) {
 }
 
 // ===============================
-// CASUAL CHAT - FIXED
+// CASUAL CHAT - FIXED PROPERLY
 // ===============================
 function casualReply(message, lang) {
-  // Use word boundaries to avoid matching "hi" in "high"
-  const words = message.split(/\s+/);
+  // Check only at word boundaries - entire message must be greeting
+  const greetings = ["hi", "hello", "hey", "kumusta", "kamusta"];
+  const thanks = ["salamat", "thank you", "thanks"];
+  
+  // Only match if message is JUST a greeting (with optional punctuation)
+  const cleanMsg = message.replace(/[^a-z\s]/g, '').trim();
   
   if (lang === "tl") {
-    if (words.some(w => ["hi", "hello", "hey", "kumusta"].includes(w)))
+    if (greetings.includes(cleanMsg))
       return "Kumusta! 👋 Ako si TalBot. Paano ako makakatulong?";
-    if (words.some(w => ["salamat", "thank", "thanks"].includes(w)))
+    if (thanks.some(t => cleanMsg === t || cleanMsg.startsWith(t + " ")))
       return "Walang anuman! 💙 Nandito lang ako para tumulong.";
   } else {
-    if (words.some(w => ["hi", "hello", "hey"].includes(w)))
+    if (greetings.includes(cleanMsg))
       return "Hello! 👋 I'm TalBot. How can I help you today?";
-    if (words.some(w => ["thank", "thanks"].includes(w)))
+    if (thanks.some(t => cleanMsg === t || cleanMsg.startsWith(t + " ")))
       return "You're welcome! 💙 I'm always here to help.";
   }
   return null;
@@ -460,6 +464,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

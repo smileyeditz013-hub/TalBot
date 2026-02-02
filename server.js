@@ -145,7 +145,7 @@ const knowledgeBase = {
    image: "",
   },
   rules_and_regulations: {
-   keywords: ["rules, regulations", "rules and regulation", "school rules", "school regulations", "patakaran ng paaralan", "mga patakaran ng paaralan"],
+   keywords: ["rules","regulations", "rules and regulation", "school rules", "school regulations", "patakaran ng paaralan", "mga patakaran ng paaralan"],
    info_en: "Rules and Regulation:\nProtocols:\nTalipan National High School's rules and regulations require students to wear a complete and proper uniform, adhere to a No ID, No Entry policy, and maintain an appropriate haircut and hair color/n."+
    "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering.\n"+
    "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense.\n"+
@@ -507,6 +507,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

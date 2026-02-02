@@ -414,6 +414,10 @@ function casualReply(message, lang) {
 // ===============================
 // CHAT ENDPOINT (SMART MATCHING)
 // ===============================
+function keywordLengthScore(keyword) {
+  return keyword.split(" ").length;
+}
+
 app.post("/chat", (req, res) => {
   const message = normalize(req.body.message);
   const lang = detectLanguage(message);
@@ -429,19 +433,26 @@ app.post("/chat", (req, res) => {
 
     for (const kw of topic.keywords) {
       let score = similarity(message, normalize(kw));
+const kwNorm = normalize(kw);
 
-      // ✅ FIXED: exact keyword match
-      if (message.includes(normalize(kw))) {
-        score = 1;
-      }
+// Strong exact phrase match (prefer longer phrases)
+if (message.includes(kwNorm)) {
+  score = 1 + keywordLengthScore(kw) * 0.2;
+}
 
-      if (score > bestScore && score > 0.6) {
-        bestScore = score;
-        bestMatch = topic;
-      }
+
+// Reject very short keywords unless exact
+if (kwNorm.length < 5 && score < 1) {
+  continue;
+}
+
+if (score > bestScore && score >= 0.7) {
+  bestScore = score;
+  bestMatch = topic;
+}
     }
   }
-
+  
   if (bestMatch) {
     const info = lang === "tl" ? bestMatch.info_tl : bestMatch.info_en;
     const response = { reply: rephrase(info, lang) };
@@ -464,9 +475,6 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
-
-
-
 
 
 

@@ -59,7 +59,7 @@ const knowledgeBase = {
 "19 years old and above\n\n"+
 "For SPED: Talipan National Highshcool offers a Special Education for PWD students. TNHS provide special kind of instructions to those students ensuring the ability to learn the same skill and information like a normal students."
   },
-  fees: {
+  principal: {
     keywords: ["principal", "school head", "headmaster", "punong guro", "punong-guro"],
     info_en: "Our principal is Maam Marina Abueva.",
     info_tl: "Ang aming principal ay si Maam Marina Abueva."
@@ -89,8 +89,8 @@ const knowledgeBase = {
   organization1: {
     keywords: ["tdlc", "talipan drum and lyre corps", "drum and lyre corps", "talipan drum corps", "talipan band", "talipan banda"],
     info_en: "Talipan Drum and lyre is an organization composed of different students who loves to play in a band. They play different instrument such as different kind of drums, lyres, and marimbas while the other members are majorettes and flags/ color guards.\n\n"+
-    "Band Advisers: Ma'am Mylene P. Lucila\n"+
-    "               Ma'am Joana E. Salumbides\n"+
+    "Band Advisers: Maam Mylene P. Lucila\n"+
+    "               Maam Joana E. Salumbides\n"+
     "Band Master:   Christian Joshua Ayala\n"+
     "Trainors:      Glady Mae Belbis\n"+
     "               Joshua L. Hosana\n"+
@@ -98,8 +98,8 @@ const knowledgeBase = {
     "               Michael Eubanas\n"+
     "               Justine Merto\n",
     info_tl: "Ang Talipan Drum and Lyre ay isang organisasyon na binubuo ng iba't ibang mag-aaral na nagsasayang ng oras sa paglalaro ng band. Naglalaro sila ng iba't ibang instrumentong tulad ng iba't ibang uri ng tambol, lyres, at marimbas habang ang iba pang miyembro ay mga majorette at mga flag/color guards.\n\n"+
-    "Band Advisers: Ma'am Mylene P. Lucila\n"+
-    "               Ma'am Joana E. Salumbides\n"+
+    "Band Advisers: Maam Mylene P. Lucila\n"+
+    "               Maam Joana E. Salumbides\n"+
     "Band Master:   Christian Joshua Ayala\n"+
     "Trainors:      Glady Mae Belbis\n"+
     "               Joshua L. Hosana\n"+
@@ -114,11 +114,129 @@ const knowledgeBase = {
     info_tl: "Tumulong sa abot ng iyong makakaya.",
     image: "https://www.bing.com/th/id/OIP.EXHTMia2dVTp1zTCP2kZfwHaE7?w=215&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
   },
-  random: {
-    keywords: ["who is wally bayola", "wallybayola", "wally"],
-    info_en: "Wally Bayola is a Filipino comedian, actor, and television host...",
-    info_tl: "Wally Bayola ay isang komedyante, aktor, at host ng telebisyon...",
+  organization2: {
+    keywords: ["el/ang talipeno", "el ang talipeno"],
+    info_en: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
+    info_tl: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
     image: "/images/wallybayola.jpeg"
+  },
+  organization3: {
+    keywords: ["yes o", "yes-o"],
+    info_en: "Yes-O is an organization consisting of students who protects the school environment. They are students who is responsible for the cleanliness of campus.",
+    info_tl: "Yes-O is an organization consisting of students who protects the school environment. They are students who is responsible for the cleanliness of campus.",
+    image: "/images/wallybayola.jpeg"
+  },
+  organization4: {
+    keywords: ["koro talipeno","koro talipeño"],
+    info_en: "Koro Talipeño is an organization that is known as the voice of Talipan. They are young talented singers that perform different Filipino folk songs and OPM. They are mentored by Juan Carlo Villanueva and through the years different students with the passion to sing, join them and with the help of their mentor they enhance their singing.",
+    info_tl: "Koro Talipeño is an organization that is known as the voice of Talipan. They are young talented singers that perform different Filipino folk songs and OPM. They are mentored by Juan Carlo Villanueva and through the years different students with the passion to sing, join them and with the help of their mentor they enhance their singing.",
+    image: "/images/wallybayola.jpeg"
+  },
+  organization5: {
+   keywords: ["ssg", "student supreme government", "student council", "supreme student government"],
+   info_en: "SSG is an organization in Talipan National High school that is a set of student council which is the highest governing body and the primary voice of the studentry, working to promote student welfare, leadership, and responsible citizenship.",
+   info_tl: "SSG is an organization in Talipan National High school that is a set of student council which is the highest governing body and the primary voice of the studentry, working to promote student welfare, leadership, and responsible citizenship.",
+   image: ""
+  },
+  organization6: {
+   keywords: ["indayog", "dance"],
+   info_en: "Indayog is an organization which is composed of student dancers. They represent the school in dance competition and through the years they competed and achieve many awards.",
+   info_tl: "Indayog is an organization which is composed of student dancers. They represent the school in dance competition and through the years they competed and achieve many awards.",
+   image: "",
+  },
+  rules_and_regulations: {
+   keywords: ["rules, regulations", "rules and regulation", "school rules", "school regulations", "patakaran ng paaralan", "mga patakaran ng paaralan"],
+   info_en: "Rules and Regulation:\nProtocols:\nTalipan National High School's rules and regulations require students to wear a complete and proper uniform, adhere to a No ID, No Entry policy, and maintain an appropriate haircut and hair color/n."+
+   "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering./n"+
+   "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense./n"+
+   "Uniform:/n"+
+   "Students must wear the complete and proper school uniform when entering the campus./n"+
+   "No ID, No Entry:/n"+
+   "A strict policy mandates that students must have their ID to enter the campus./n"+
+   "Haircut and Hair Color:/n"+
+   "Students are expected to observe appropriate and proper haircuts and hair colors."+
+   "Prohibited Conduct:/n"+
+   "Liquor and Smoking: Coming to school under the influence of liquor or smoking inside the campus is strictly prohibited./n"+
+   "Jumping Over the Fence: Students are not allowed to jump over the fence./n"+
+   "Anti-Littering/Loitering: Actions such as littering and loitering within the school campus are not permitted./n"+
+   "Initiating Conflicts: Starting fights or conflicts within the school grounds is forbidden./n"+
+   "Disciplinary Measures: \n"+
+   "First Offense:"+
+   "For certain offenses (e.g., being under the influence of liquor, smoking, jumping over the fence, initiating conflicts), the student is reported to the guidance office and required to sign a promissory note./n"+
+   "Second Offense:"+
+   "A fine of ₱500.00 is imposed for a second offense./n"+
+   "Third Offense:/n"+
+   "Students may face a suspension from school for seven (7) days for a third offense./n"+
+   "Initiating Conflicts:/n"+
+   "For initiating conflicts, a parent and child will be called to the guidance office for disciplinary action for the first offense./n"+
+   "Dress Code:/n"+
+   "All students must wear proper attire and uniform but there is the list of dresses that are allowed inside the campus:/n"+
+   "•	Top Dresses:/n"+
+   "•	T – shirts or Poloshirt , Blouses or Cropped Tops nit exposing belly skin/n"+
+   "•	Long sleeves/n"+
+   "•	Pants or Jeans/n"+
+   "•	Knee-length/ long dresses and skirts./n"+
+   "•	Footwear/n"+
+   "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes./n"+
+   "Things that aren’t allowed to wear inside the campus:/n"+
+   "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits./n"+
+   "•	Ripped jeans, shorts or miniskirts/n"+
+   "•	Slippers, Flipflops/n",
+   info_tl: "Rules and Regulation:\nProtocols:\nTalipan National High School's rules and regulations require students to wear a complete and proper uniform, adhere to a No ID, No Entry policy, and maintain an appropriate haircut and hair color/n."+
+   "Prohibited activities include wearing earrings (for boys), coming to school under the influence of liquor, smoking, jumping over the fence, anti-littering, and loitering./n"+
+   "Violations for certain offenses, such as being under the influence or smoking, lead to a warning and a promissory note for a first offense, a ₱500 fine for a second offense, and seven-day suspension for a third offense./n"+
+   "Uniform:/n"+
+   "Students must wear the complete and proper school uniform when entering the campus./n"+
+   "No ID, No Entry:/n"+
+   "A strict policy mandates that students must have their ID to enter the campus./n"+
+   "Haircut and Hair Color:/n"+
+   "Students are expected to observe appropriate and proper haircuts and hair colors."+
+   "Prohibited Conduct:/n"+
+   "Liquor and Smoking: Coming to school under the influence of liquor or smoking inside the campus is strictly prohibited./n"+
+   "Jumping Over the Fence: Students are not allowed to jump over the fence./n"+
+   "Anti-Littering/Loitering: Actions such as littering and loitering within the school campus are not permitted./n"+
+   "Initiating Conflicts: Starting fights or conflicts within the school grounds is forbidden./n"+
+   "Disciplinary Measures: \n"+
+   "First Offense:"+
+   "For certain offenses (e.g., being under the influence of liquor, smoking, jumping over the fence, initiating conflicts), the student is reported to the guidance office and required to sign a promissory note./n"+
+   "Second Offense:"+
+   "A fine of ₱500.00 is imposed for a second offense./n"+
+   "Third Offense:/n"+
+   "Students may face a suspension from school for seven (7) days for a third offense./n"+
+   "Initiating Conflicts:/n"+
+   "For initiating conflicts, a parent and child will be called to the guidance office for disciplinary action for the first offense./n"+
+   "Dress Code:/n"+
+   "All students must wear proper attire and uniform but there is the list of dresses that are allowed inside the campus:/n"+
+   "•	Top Dresses:/n"+
+   "•	T – shirts or Poloshirt , Blouses or Cropped Tops nit exposing belly skin/n"+
+   "•	Long sleeves/n"+
+   "•	Pants or Jeans/n"+
+   "•	Knee-length/ long dresses and skirts./n"+
+   "•	Footwear/n"+
+   "•	Rubber Shoes, sneakers, strappy sandals, and other closed shoes./n"+
+   "Things that aren’t allowed to wear inside the campus:/n"+
+   "•	Cropped tops exposing belly, sleeveless, off-shoulders, spaghetti straps, knitted shears, shirts with inappropriate messages and any revealing outfits./n"+
+   "•	Ripped jeans, shorts or miniskirts/n"+
+   "•	Slippers, Flipflops/n",
+   image: ""
+  },
+  schedule: {
+   keywords: ["class schedule", "school schedule", "class time", "school time", "oras ng klase", "iskedyul ng klase"],
+   info_en: "Talipan Class Schedules/n/n"+
+   "For Grade 7 to 10:/n"+
+   "7am to 12pm, then an hour break then the class resumes at 1pm until 4pm/n/n"+
+   "For G11:/n"+
+   "6am to 12 pm, it is affected by the shift system among SHS students/n/n"+
+   "For G12:/n"+
+   "12pm until 6 pm",
+   info_tl: "Talipan Class Schedules/n/n"+
+   "For Grade 7 to 10:/n"+
+   "7am to 12pm, then an hour break then the class resumes at 1pm until 4pm/n/n"+
+   "For G11:/n"+
+   "6am to 12 pm, it is affected by the shift system among SHS students/n/n"+
+   "For G12:/n"+
+   "12pm until 6 pm",
+   image: ""
   }
 };
 

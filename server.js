@@ -312,7 +312,7 @@ const knowledgeBase = {
    "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño's newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal's office.",
     image: ""
   },
-  
+
   // GRADE 7 TEACHERS
   teacher_roselyn_acesor: {
     keywords: ["roselyn acesor", "roselyn s acesor", "ma'am roselyn", "maam roselyn", "acesor g7 head", "g7 head teacher"],
@@ -1031,6 +1031,46 @@ function similarity(a, b) {
 }
 
 // ===============================
+// GET TOP MATCHES FOR "DID YOU MEAN"
+// ===============================
+function getTopMatches(message, threshold = 0.4, maxResults = 5) {
+  const matches = [];
+  
+  for (const key in knowledgeBase) {
+    const topic = knowledgeBase[key];
+    
+    for (const kw of topic.keywords) {
+      const score = similarity(message, normalize(kw));
+      const kwNorm = normalize(kw);
+      
+      // Skip very short keywords unless exact match
+      if (kwNorm.length < 5 && score < 1) continue;
+      
+      if (score >= threshold) {
+        matches.push({
+          keyword: kw,
+          score: score,
+          topicKey: key
+        });
+      }
+    }
+  }
+  
+  // Sort by score (highest first) and remove duplicates
+  matches.sort((a, b) => b.score - a.score);
+  
+  // Remove duplicate topics, keep only the best match per topic
+  const seen = new Set();
+  const unique = matches.filter(m => {
+    if (seen.has(m.topicKey)) return false;
+    seen.add(m.topicKey);
+    return true;
+  });
+  
+  return unique.slice(0, maxResults);
+}
+
+// ===============================
 // LANGUAGE DETECTION
 // ===============================
 function detectLanguage(message) {
@@ -1130,13 +1170,25 @@ if (score > bestScore && score >= 0.7) {
   }
   
   if (bestMatch) {
-    const info = lang === "tl" ? bestMatch.info_tl : bestMatch.info_en;
+    const info = (lang === "tl" && bestMatch.info_tl) ? bestMatch.info_tl : bestMatch.info_en;
     const response = { reply: rephrase(info, lang) };
     if (bestMatch.image) response.image = bestMatch.image;
     return res.json(response);
   }
 
-  // FALLBACK
+  // NO MATCH FOUND - GET "DID YOU MEAN" SUGGESTIONS
+  const suggestions = getTopMatches(message, 0.4, 5);
+  
+  if (suggestions.length > 0) {
+    return res.json({
+      reply: lang === "tl" 
+        ? "Paumanhin 😅 wala pa akong impormasyon tungkol diyan. Baka ito ang ibig mong sabihin?"
+        : "Sorry 😅 I don't have information about that yet. Did you mean one of these?",
+      didYouMean: suggestions.map(s => s.keyword)
+    });
+  }
+
+  // FALLBACK - NO SUGGESTIONS
   return res.json({
     reply:
       lang === "tl"

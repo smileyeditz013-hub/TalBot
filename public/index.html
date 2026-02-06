@@ -204,6 +204,36 @@ body {
   align-self: flex-end;
 }
 
+/* SUGGESTION BUTTONS */
+.suggestions-container {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.suggestion-btn {
+  padding: 8px 16px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.suggestion-btn:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+.suggestion-btn:active {
+  transform: translateY(0);
+}
+
 /* BOT IMAGE */
 .bot img {
   margin-top: 8px;
@@ -301,7 +331,7 @@ const messages = document.getElementById("messages");
 const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
 
-function addMessage(text, type, image = null) {
+function addMessage(text, type, image = null, suggestions = null) {
   const formattedText = escapeHTML(text).replace(/\n/g, "<br>");
 
   let html = `<div class="msg ${type}">${formattedText}`;
@@ -312,6 +342,32 @@ function addMessage(text, type, image = null) {
 
   html += `</div>`;
   messages.insertAdjacentHTML("beforeend", html);
+  messages.scrollTop = messages.scrollHeight;
+
+  // Add suggestion buttons if provided
+  if (suggestions && suggestions.length > 0) {
+    const suggestionsDiv = document.createElement('div');
+    suggestionsDiv.className = 'suggestions-container';
+    
+    suggestions.forEach(suggestion => {
+      const button = document.createElement('button');
+      button.textContent = suggestion;
+      button.className = 'suggestion-btn';
+      
+      button.onclick = function() {
+        // Remove all suggestion containers
+        document.querySelectorAll('.suggestions-container').forEach(el => el.remove());
+        // Send the suggestion as a new query
+        input.value = suggestion;
+        send();
+      };
+      
+      suggestionsDiv.appendChild(button);
+    });
+    
+    messages.appendChild(suggestionsDiv);
+  }
+  
   messages.scrollTop = messages.scrollHeight;
 }
 
@@ -338,7 +394,7 @@ async function send() {
   const data = await getBotResponse(msg);
 
   messages.removeChild(messages.lastChild);
-  addMessage(data.reply, "bot", data.image);
+  addMessage(data.reply, "bot", data.image, data.didYouMean);
 
   sendBtn.disabled = false;
   input.disabled = false;

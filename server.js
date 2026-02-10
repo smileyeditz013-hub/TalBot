@@ -116,8 +116,8 @@ const knowledgeBase = {
   },
   organization2: {
     keywords: ["el/ang talipeno", "el ang talipeno"],
-    info_en: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
-    info_tl: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
+    info_en: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing. https://www.facebook.com/share/p/18CTwqHT1j/",
+    info_tl: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing. https://www.facebook.com/share/p/18CTwqHT1j/",
     image: "https://www.facebook.com/share/p/18CTwqHT1j/"
   },
   organization3: {
@@ -1203,6 +1203,7 @@ if (score > bestScore && score >= 0.7) {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

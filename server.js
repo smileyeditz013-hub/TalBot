@@ -118,7 +118,7 @@ const knowledgeBase = {
     keywords: ["el/ang talipeno", "el ang talipeno"],
     info_en: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
     info_tl: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
-    image: "/images/FB_IMG_1770707199400.jpg"
+    image: "/images/wallybayola.jpeg"
   },
   organization3: {
     keywords: ["yes o", "yes-o"],
@@ -640,119 +640,119 @@ const knowledgeBase = {
     "Position: Head Teacher-in-Charge for Grade 11 curriculum\n" +
     "Designation: Head Teacher I, Head Teacher of English\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Gina A.jpeg"
   },
   teacher_crizel_ventocilla: {
     keywords: ["crizel ventocilla", "crizel m ventocilla", "ma'am crizel", "maam ventocilla", "ventocilla g11", "g11 chief adviser"],
     info_en: "Ma'am Crizel M. Ventocilla\n" +
     "Position: Chief Adviser of G11 curriculum\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Crizel M.jpeg"
   },
   teacher_ailyn_ocomen: {
     keywords: ["ailyn ocomen", "ailyn r ocomen", "ma'am ailyn ocomen", "maam ocomen", "ocomen g11", "g11 stem aro adviser"],
     info_en: "Ma'am Ailyn R. Ocomen\n" +
     "Position: Adviser of G11 STEM ARO\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Ailyn R.jpeg"
   },
   teacher_ivy_gaasis: {
     keywords: ["ivy gaasis", "ivy d gaasis", "ma'am ivy gaasis", "maam gaasis", "gaasis g11", "g11 humss idg adviser"],
     info_en: "Ma'am Ivy D. Gaasis\n" +
     "Position: Adviser of G11 HUMSS IDG\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Ivy D.jpeg"
   },
   teacher_winalyn_sulit: {
     keywords: ["winalyn sulit", "winalyn m sulit", "ma'am winalyn", "maam sulit", "sulit g11", "g11 tvl he wms adviser"],
     info_en: "Ma'am Winalyn M. Sulit\n" +
     "Position: Adviser of G11 TVL HE WMS\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Winalyn M.jpeg"
   },
   teacher_lorna_arsenal: {
     keywords: ["lorna arsenal", "lorna c arsenal", "ma'am lorna arsenal", "maam arsenal g11", "arsenal g11", "g11 als epas adviser"],
     info_en: "Ma'am Lorna C. Arsenal\n" +
     "Position: Adviser of ALS EPAS (G11)\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Lorna C.jpeg"
   },
   teacher_jocelyn_enriquez: {
     keywords: ["jocelyn enriquez", "jocelyn l enriquez", "ma'am jocelyn", "maam enriquez", "enriquez g11", "g11 humss jle adviser"],
     info_en: "Ma'am Jocelyn L. Enriquez\n" +
     "Position: Adviser of G11 HUMSS JLE\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Jocelyn L.jpeg"
   },
   teacher_liberty_paz: {
     keywords: ["liberty paz", "liberty e paz", "ma'am liberty", "maam paz g11", "paz g11", "g11 tvl he lep adviser"],
     info_en: "Ma'am Liberty E. Paz\n" +
     "Position: Adviser of G11 TVL HE LEP\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Liberty E.jpeg"
   },
   teacher_natharin_adarna: {
     keywords: ["natharin adarna", "natharin a adarna", "ma'am natharin", "maam adarna", "adarna g11", "g11 tvl he naa adviser"],
     info_en: "Ma'am Natharin A. Adarna\n" +
     "Position: Adviser of G11 TVL HE NAA\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Natharin A.jpeg"
   },
   teacher_lanilyn_diala: {
     keywords: ["lanilyn diala", "lanilyn b diala", "ma'am lanilyn", "maam diala g11 lbd", "diala g11 lbd", "g11 humss lbd adviser"],
     info_en: "Ma'am Lanilyn B. Diala\n" +
     "Position: Adviser of G11 HUMSS LBD\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Lanilyn B.jpeg"
   },
   teacher_maricel_diala: {
     keywords: ["maricel diala", "maricel s diala", "ma'am maricel diala", "maam diala g11 msd", "diala g11 abm", "g11 abm msd adviser"],
     info_en: "Ma'am Maricel S. Diala\n" +
     "Position: Adviser of G11 ABM MSD\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Maricel S.jpeg"
   },
   teacher_joemar_pornobi: {
     keywords: ["joe mar levi pornobi", "joemar pornobi", "sir joe mar", "sir pornobi", "pornobi g11", "g11 humms jqp adviser"],
     info_en: "Sir Joe-Mar Levi Q. Pornobi\n" +
     "Position: Adviser of G11 HUMMS JQP\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Joe Mar Q.jpeg"
   },
   teacher_jean_caraig: {
     keywords: ["jean may caraig", "jean caraig", "ma'am jean may", "maam caraig", "caraig g11", "g11 tvl css jdc adviser"],
     info_en: "Ma'am Jean May D. Caraig\n" +
     "Position: Adviser of G11 TVL CSS JDC\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Jean D.jpeg"
   },
   teacher_jomel_remot: {
     keywords: ["jomel remot", "jomel s remot", "sir jomel", "sir remot", "remot g11", "g11 tvl epas jsr adviser"],
     info_en: "Sir Jomel S. Remot\n" +
     "Position: Adviser of G11 TVL EPAS JSR\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Jomel S.jpeg"
   },
   teacher_janine_deguzman: {
     keywords: ["janine charlotte de guzman", "janine de guzman", "ma'am janine charlotte", "maam de guzman g11", "de guzman g11", "g11 stem jd adviser"],
     info_en: "Ma'am Janine Charlotte D. De Guzman\n" +
     "Position: Adviser of G11 STEM JD\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Janine D.jpeg"
   },
   teacher_angelica_zaide: {
     keywords: ["angelica zaide", "angelica b zaide", "ma'am angelica", "maam zaide", "zaide g11", "g11 humss abz adviser"],
     info_en: "Ma'am Angelica B. Zaide\n" +
     "Position: Adviser of G11 HUMSS ABZ\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Angelica B.jpeg"
   },
   teacher_sandra_ranola: {
     keywords: ["sandra lei ranola", "sandra ranola", "ma'am sandra lei", "maam ranola", "ranola g11", "g11 humss smr adviser"],
     info_en: "Ma'am Sandra Lei M. Rañola\n" +
     "Position: Adviser of G11 HUMSS SMR\n" +
     "Grade Level: Grade 11",
-    image: ""
+    image: "/images/Sandra M.jpeg"
   },
   teacher_dennis_lopez: {
     keywords: ["dennis lopez", "dennis a lopez", "sir dennis lopez", "lopez g11"],
@@ -774,21 +774,7 @@ const knowledgeBase = {
     "Position: Teacher\n" +
     "Grade Level: Grade 11",
     image: ""
-  },
-  teacher_dhavie_ruz_g11: {
-    keywords: ["dhavie ruz g11", "dhavie d ruz g11", "ma'am dhavie g11", "maam ruz g11"],
-    info_en: "Dhavie D. Ruz\n" +
-    "Position: Teacher\n" +
-    "Grade Level: Grade 11",
-    image: ""
-  },
-  teacher_kristy_alfuen_g11: {
-    keywords: ["kristy lane alfuen g11", "kristy alfuen g11", "ma'am kristy g11", "maam alfuen g11"],
-    info_en: "Kristy Lane O. Alfuen\n" +
-    "Position: Teacher\n" +
-    "Grade Level: Grade 11",
-    image: ""
-  },
+   },
   teacher_mylene_flavier: {
     keywords: ["mylene flavier", "mylene n flavier", "ma'am mylene flavier", "maam flavier", "flavier g11"],
     info_en: "Mylene N. Flavier\n" +
@@ -811,119 +797,119 @@ const knowledgeBase = {
     "Position: Head Teacher-in-Charge for Grade 12 curriculum\n" +
     "Designation: Head Teacher III, Head Teacher of Mathematics and ESP\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Edna G.jpeg"
   },
   teacher_edeson_marquez: {
     keywords: ["edeson marquez", "edeson a marquez", "sir edeson", "sir marquez g12", "marquez g12 chief", "g12 chief adviser"],
     info_en: "Sir Edeson A. Marquez\n" +
     "Position: Chief Adviser of G12 curriculum\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Edz A.jpeg"
   },
   teacher_levin_valdez: {
     keywords: ["levin vowie valdez", "levin valdez", "sir levin vowie", "sir valdez", "valdez g12", "g12 tvl css lav adviser"],
     info_en: "Sir Levin Vowie A. Valdez\n" +
     "Position: Adviser of G12 TVL CSS LAV\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Levin A.jpeg"
   },
   teacher_dhavie_ruz_g12: {
     keywords: ["dhavie ruz g12", "dhavie d ruz g12", "ma'am dhavie g12", "maam ruz g12", "ruz g12 humss", "g12 humss dr adviser"],
     info_en: "Ma'am Dhavie D. Ruz\n" +
     "Position: Adviser of G12 HUMSS DR\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Dhavie D.jpeg"
   },
   teacher_kristy_alfuen_g12: {
     keywords: ["kristy lane alfuen g12", "kristy alfuen g12", "ma'am kristy g12", "maam alfuen g12", "alfuen g12 tvl", "g12 tvl he koa adviser"],
     info_en: "Ma'am Kristy Lane O. Alfuen\n" +
     "Position: Adviser of G12 TVL HE KOA\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Kristy O.jpeg"
   },
   teacher_grace_palines: {
     keywords: ["maria grace palines", "grace palines", "ma'am maria grace", "maam palines", "palines g12", "g12 humss gdp adviser"],
     info_en: "Ma'am Maria Grace D. Palines\n" +
     "Position: Adviser of G12 HUMSS GDP\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Grace D.jpeg"
   },
   teacher_renebeth_ladines: {
     keywords: ["renebeth ladines", "renebeth j ladines", "ma'am renebeth", "maam ladines", "ladines g12", "g12 humss rjl adviser"],
     info_en: "Ma'am Renebeth J. Ladines\n" +
     "Position: Adviser of G12 HUMSS RJL\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Renebeth J.jpeg"
   },
   teacher_victoria_perez: {
     keywords: ["maria victoria perez", "victoria perez", "ma'am maria victoria", "maam perez g12", "perez g12", "g12 abm vlp adviser"],
     info_en: "Ma'am Maria Victoria L. Perez\n" +
     "Position: Adviser of G12 ABM VLP\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Victoria L.jpeg"
   },
   teacher_laurice_tadiosa: {
     keywords: ["laurice tadiosa", "laurice a tadiosa", "ma'am laurice", "maam tadiosa", "tadiosa g12", "g12 tvl he lat adviser"],
     info_en: "Ma'am Laurice A. Tadiosa\n" +
     "Position: Adviser of G12 TVL HE LAT\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Laurice A.jpeg"
   },
   teacher_shane_porte: {
     keywords: ["shane marie porte", "shane porte", "ma'am shane marie", "maam porte", "porte g12", "g12 stem scp adviser"],
     info_en: "Ma'am Shane Marie C. Porte\n" +
     "Position: Adviser of G12 STEM SCP\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Shane C.jpeg"
   },
   teacher_janice_montalbo: {
     keywords: ["janice montalbo", "janice z montalbo", "ma'am janice montalbo", "maam montalbo", "montalbo g12", "g12 tvl epas jzm adviser"],
     info_en: "Ma'am Janice Z. Montalbo\n" +
     "Position: Adviser of G12 TVL EPAS JZM\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Janice Z.jpeg"
   },
   teacher_john_dator: {
     keywords: ["john emerson dator", "john dator", "sir john emerson", "sir dator g12", "dator g12 humss", "g12 humss jdd adviser"],
     info_en: "Sir John Emerson D. Dator\n" +
     "Position: Adviser of G12 HUMSS JDD\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/John D.jpeg"
   },
   teacher_clarrise_sangalang: {
     keywords: ["clarrise alyssa sangalang", "clarrise sangalang", "ma'am clarrise", "maam sangalang", "sangalang g12", "g12 stem cps adviser"],
     info_en: "Ma'am Clarrise Alyssa P. Sangalang\n" +
     "Position: Adviser of G12 STEM CPS\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Clay P.jpeg"
   },
   teacher_lorna_arenal: {
     keywords: ["lorna arenal", "lorna c arenal", "ma'am lorna arenal", "maam arenal g12", "arenal g12", "g12 als epas adviser"],
     info_en: "Ma'am Lorna C. Arenal\n" +
     "Position: Adviser of G12 ALS EPAS\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Lorna C.jpeg"
   },
   teacher_joel_arcamo: {
     keywords: ["joel arcamo", "joel r arcamo", "sir joel arcamo", "sir arcamo", "arcamo g12", "g12 humss jra adviser"],
     info_en: "Sir Joel R. Arcamo\n" +
     "Position: Adviser of G12 HUMSS JRA\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Joel R.jpeg"
   },
   teacher_joel_pornela: {
     keywords: ["joel pornela", "joel b pornela", "sir joel pornela", "sir pornela", "pornela g12", "g12 tvl je jbp adviser"],
     info_en: "Sir Joel B. Pornela\n" +
     "Position: Adviser of G12 TVL JE JBP\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Joel B.jpeg"
   },
   teacher_lea_leonardo: {
     keywords: ["lea leonardo", "lea s leonardo", "ma'am lea", "maam leonardo", "leonardo g12", "g12 humss lsl adviser"],
     info_en: "Ma'am Lea S. Leonardo\n" +
     "Position: Adviser of G12 HUMSS LSL\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/Lea.jpeg"
   },
   teacher_sherwin_diala: {
     keywords: ["sherwin diala", "sherwin s diala", "sir sherwin diala", "diala g12 sherwin"],

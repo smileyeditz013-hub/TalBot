@@ -179,58 +179,221 @@ body {
   flex-direction: column;
   padding: 40px;
   position: relative;
-  background: linear-gradient(135deg, #a8e6cf 0%, #7fdbad 50%, #56d98e 100%);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 242, 255, 0.25), transparent 30%),
+    radial-gradient(circle at 88% 82%, rgba(0, 189, 255, 0.2), transparent 34%),
+    linear-gradient(145deg, #04131e 0%, #0b2538 52%, #12314c 100%);
 }
 
 /* Animated chat background */
 .chat-bg-animation {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.1;
+  inset: 0;
+  overflow: hidden;
   z-index: 0;
   pointer-events: none;
+}
+
+.network-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  animation: networkCanvasDrift 28s ease-in-out infinite alternate;
 }
 
 .chat-bg-animation::before {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.1) 0px, transparent 1px, transparent 40px, rgba(255,255,255,0.1) 41px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.1) 0px, transparent 1px, transparent 40px, rgba(255,255,255,0.1) 41px);
-  animation: techGridMove 15s linear infinite;
+  inset: -15%;
+  background-image:
+    linear-gradient(120deg, transparent 35%, rgba(70, 239, 255, 0.2) 50%, transparent 65%),
+    repeating-linear-gradient(90deg, rgba(73, 233, 255, 0.18) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(0deg, rgba(73, 233, 255, 0.15) 0 1px, transparent 1px 46px);
+  mix-blend-mode: screen;
+  animation: techGridMove 18s linear infinite;
 }
 
-@keyframes techGridMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(40px, 40px); }
+.chat-bg-animation::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%2347e8ff' stroke-opacity='.22' stroke-width='1.1'%3E%3Cpath d='M210 70l60 35v70l-60 35-60-35v-70z'/%3E%3Cpath d='M80 145l52 30v60l-52 30-52-30v-60z'/%3E%3Cpath d='M340 155l42 24v48l-42 24-42-24v-48z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.45;
+  animation: driftPattern 24s linear infinite;
 }
+
+.network-layer {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  opacity: 0.38;
+  mix-blend-mode: screen;
+}
+
+.network-layer .net-lines {
+  fill: none;
+  stroke: rgba(122, 244, 255, 0.52);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 6 8;
+  animation: networkFlow 20s linear infinite;
+}
+
+.network-layer .net-node {
+  fill: rgba(140, 248, 255, 0.78);
+  filter: drop-shadow(0 0 8px rgba(104, 241, 255, 0.8));
+  animation: nodeBlink 6s ease-in-out infinite;
+}
+
+.network-layer.layer-b {
+  opacity: 0.24;
+  transform: scale(1.08);
+}
+
+.network-layer.layer-a {
+  animation: networkDriftA 34s ease-in-out infinite alternate;
+}
+.network-layer.layer-b {
+  animation: networkDriftB 40s ease-in-out infinite alternate;
+}
+
+.hud-ring {
+  position: absolute;
+  border: 1px solid rgba(99, 240, 255, 0.55);
+  border-radius: 50%;
+  box-shadow: inset 0 0 15px rgba(79, 233, 255, 0.35), 0 0 24px rgba(33, 196, 240, 0.22);
+  animation: ringSpin 14s linear infinite;
+}
+
+.hud-ring::before {
+  content: '';
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  border: 1px dashed rgba(107, 244, 255, 0.55);
+}
+
+.hud-ring.ring-a {
+  width: 210px;
+  height: 210px;
+  top: 18%;
+  right: 10%;
+}
+
+.hud-ring.ring-b {
+  width: 140px;
+  height: 140px;
+  bottom: 12%;
+  left: 9%;
+  animation-direction: reverse;
+  animation-duration: 12s;
+}
+
+.scan-line {
+  position: absolute;
+  inset: -30% 0 auto;
+  height: 55%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(108, 245, 255, 0.03) 30%, rgba(108, 245, 255, 0.2) 48%, rgba(108, 245, 255, 0.05) 68%, transparent 100%);
+  animation: scanSweep 7s ease-in-out infinite;
+}
+
+.hex-node {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #7df4ff;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  box-shadow: 0 0 12px rgba(125, 244, 255, 0.95);
+  animation: pulseNode 3.2s ease-in-out infinite;
+}
+
+.hex-node.node-1 { top: 22%; left: 22%; animation-delay: 0s; }
+.hex-node.node-2 { top: 38%; left: 58%; animation-delay: .9s; }
+.hex-node.node-3 { top: 66%; left: 76%; animation-delay: 1.8s; }
+.hex-node.node-4 { top: 74%; left: 36%; animation-delay: 2.4s; }
 
 .data-stream {
   position: absolute;
   font-family: 'Courier New', monospace;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+  color: rgba(138, 247, 255, 0.8);
   white-space: nowrap;
-  animation: dataFlow 10s linear infinite;
+  text-shadow: 0 0 8px rgba(138, 247, 255, 0.55);
+  animation: dataFlow 9s linear infinite;
+}
+
+@keyframes networkCanvasDrift {
+  0% { transform: translate3d(-1.2%, -0.8%, 0) scale(1.01); }
+  50% { transform: translate3d(1.4%, 0.9%, 0) scale(1.03); }
+  100% { transform: translate3d(-0.6%, 1.4%, 0) scale(1.01); }
+}
+
+@keyframes networkDriftA {
+  0% { transform: translate3d(-2%, -1%, 0) scale(1); }
+  50% { transform: translate3d(2%, 1%, 0) scale(1.02); }
+  100% { transform: translate3d(-1%, 2%, 0) scale(0.99); }
+}
+
+@keyframes networkDriftB {
+  0% { transform: translate3d(1%, 2%, 0) scale(1.08); }
+  50% { transform: translate3d(-2%, -1%, 0) scale(1.1); }
+  100% { transform: translate3d(2%, -2%, 0) scale(1.06); }
+}
+
+@keyframes networkFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -220; }
+}
+
+@keyframes nodeBlink {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@keyframes techGridMove {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(46px, 46px, 0); }
+}
+
+@keyframes driftPattern {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-55px, 30px, 0); }
+}
+
+@keyframes ringSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes scanSweep {
+  0%, 100% { transform: translateY(-30%); opacity: .1; }
+  45% { opacity: .75; }
+  55% { opacity: .45; }
+  70% { transform: translateY(180%); opacity: .15; }
 }
 
 @keyframes dataFlow {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
+  0% { transform: translateY(-150%); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateY(155%); opacity: 0; }
 }
 
-.data-stream:nth-child(1) { left: 10%; animation-delay: 0s; }
-.data-stream:nth-child(2) { left: 30%; animation-delay: 2s; }
-.data-stream:nth-child(3) { left: 50%; animation-delay: 4s; }
-.data-stream:nth-child(4) { left: 70%; animation-delay: 1s; }
-.data-stream:nth-child(5) { left: 90%; animation-delay: 3s; }
+@keyframes pulseNode {
+  0%,100% { transform: scale(0.9); opacity: 0.45; }
+  50% { transform: scale(1.55); opacity: 1; }
+}
+
+.data-stream.ds-1 { left: 10%; top: 8%; animation-delay: 0s; }
+.data-stream.ds-2 { left: 36%; top: 20%; animation-delay: 2s; }
+.data-stream.ds-3 { left: 62%; top: 10%; animation-delay: 4s; }
+.data-stream.ds-4 { left: 75%; top: 30%; animation-delay: 1s; }
+.data-stream.ds-5 { left: 16%; top: 34%; animation-delay: 3s; }
 
 /* TALBOT LOGO */
 .talbot-logo {
@@ -355,6 +518,7 @@ body {
   transition: all 0.3s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+}
 
 .suggestion-btn:hover {
   background: white;
@@ -391,7 +555,10 @@ body {
 
 .send-btn {
   width: 50px;
+  min-width: 50px;
   height: 50px;
+  min-height: 50px;
+  flex-shrink: 0;
   background: #2e7d32;
   border: none;
   border-radius: 50%;
@@ -559,6 +726,35 @@ body {
     padding: 20px;
   }
 
+  .input-container {
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .input-container input {
+    min-width: 0;
+  }
+
+  .send-btn {
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    min-height: 46px;
+  }
+
+  .hud-ring.ring-a {
+    width: 150px;
+    height: 150px;
+    right: 4%;
+  }
+
+  .hud-ring.ring-b {
+    width: 96px;
+    height: 96px;
+    left: 6%;
+    bottom: 8%;
+  }
+
   .talbot-logo {
     width: 90px;
     height: 90px;
@@ -581,7 +777,6 @@ body {
   .greeting-text p {
     font-size: 16px;
   }
-
   #talbot {
     width: 100px;
     height: 100px;
@@ -653,11 +848,39 @@ body {
   <div class="right-panel">
     <!-- Animated chat background -->
     <div class="chat-bg-animation">
-      <div class="data-stream">01001000 01100101 01101100 01101100 01101111</div>
-      <div class="data-stream">01010100 01100001 01101100 01101001 01110000</div>
-      <div class="data-stream">01100001 01101110 00100000 01001110 01001000</div>
-      <div class="data-stream">01010011 00100000 01000001 01001001 00100000</div>
-      <div class="data-stream">01000010 01101111 01110100 00100000 01010011</div>
+      <canvas class="network-canvas" id="networkCanvas" aria-hidden="true"></canvas>
+      <svg class="network-layer layer-a" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+        <path class="net-lines" d="M40 110 L180 60 L330 140 L505 70 L670 165 L840 100 L960 190 M120 260 L280 210 L460 270 L640 240 L810 320 L940 290 M60 430 L220 360 L390 450 L580 390 L760 470 L920 420 M160 620 L320 540 L500 610 L690 540 L860 620 M180 60 L120 260 L60 430 M330 140 L280 210 L220 360 L320 540 M505 70 L460 270 L390 450 L500 610 M670 165 L640 240 L580 390 L690 540 M840 100 L810 320 L760 470 L860 620" />
+        <circle class="net-node" cx="180" cy="60" r="5" />
+        <circle class="net-node" cx="505" cy="70" r="5" />
+        <circle class="net-node" cx="840" cy="100" r="5" />
+        <circle class="net-node" cx="280" cy="210" r="5" />
+        <circle class="net-node" cx="640" cy="240" r="5" />
+        <circle class="net-node" cx="390" cy="450" r="5" />
+        <circle class="net-node" cx="760" cy="470" r="5" />
+        <circle class="net-node" cx="500" cy="610" r="5" />
+      </svg>
+      <svg class="network-layer layer-b" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+        <path class="net-lines" d="M20 180 L220 120 L430 190 L620 110 L790 170 L980 130 M100 320 L300 280 L500 340 L700 300 L890 360 M40 520 L240 460 L420 530 L610 470 L820 550 L980 500 M220 120 L300 280 L240 460 M430 190 L500 340 L420 530 M620 110 L700 300 L610 470 M790 170 L890 360 L820 550" />
+        <circle class="net-node" cx="220" cy="120" r="4" />
+        <circle class="net-node" cx="620" cy="110" r="4" />
+        <circle class="net-node" cx="980" cy="130" r="4" />
+        <circle class="net-node" cx="500" cy="340" r="4" />
+        <circle class="net-node" cx="240" cy="460" r="4" />
+        <circle class="net-node" cx="820" cy="550" r="4" />
+      </svg>
+      <div class="scan-line"></div>
+      <div class="hud-ring ring-a"></div>
+      <div class="hud-ring ring-b"></div>
+      <div class="hex-node node-1"></div>
+      <div class="hex-node node-2"></div>
+      <div class="hex-node node-3"></div>
+      <div class="hex-node node-4"></div>
+      <div class="data-stream ds-1">SYS 01110100 01100001 01101100 01101001</div>
+      <div class="data-stream ds-2">CORE ONLINE • LATENCY 02MS • CHANNEL SECURE</div>
+      <div class="data-stream ds-3">PATH /school/faq -> QUERY_ROUTER ACTIVE</div>
+      <div class="data-stream ds-4">NODES 24 • STATUS STABLE • SIGNAL +92dB</div>
+      <div class="data-stream ds-5">AI-ASSIST READY :: HELLO TALIPEÑO</div>
     </div>
 
     <!-- Tali-Bot Logo -->
@@ -863,6 +1086,87 @@ setTimeout(() => {
   walkTalbot();
   setTimeout(randomAction, 8000);
 }, 2000);
+
+
+function setupNetworkCanvas() {
+  const canvas = document.getElementById("networkCanvas");
+  if (!canvas) return;
+
+  const context = canvas.getContext("2d");
+  if (!context) return;
+
+  const nodes = [];
+  const nodeCount = 24;
+  const maxDistance = 190;
+
+  function resizeCanvas() {
+    const parent = canvas.parentElement;
+    const rect = parent.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * window.devicePixelRatio));
+    canvas.height = Math.max(1, Math.floor(rect.height * window.devicePixelRatio));
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    context.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+
+    if (!nodes.length) {
+      for (let i = 0; i < nodeCount; i += 1) {
+        nodes.push({
+          x: Math.random() * rect.width,
+          y: Math.random() * rect.height,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.28
+        });
+      }
+    }
+  }
+
+  function animate() {
+    const width = canvas.width / window.devicePixelRatio;
+    const height = canvas.height / window.devicePixelRatio;
+    context.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const node = nodes[i];
+      node.x += node.vx;
+      node.y += node.vy;
+
+      if (node.x <= -20 || node.x >= width + 20) node.vx *= -1;
+      if (node.y <= -20 || node.y >= height + 20) node.vy *= -1;
+
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const other = nodes[j];
+        const dx = node.x - other.x;
+        const dy = node.y - other.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance < maxDistance) {
+          const alpha = 1 - distance / maxDistance;
+          context.strokeStyle = `rgba(122, 244, 255, ${0.32 * alpha})`;
+          context.lineWidth = 1;
+          context.beginPath();
+          context.moveTo(node.x, node.y);
+          context.lineTo(other.x, other.y);
+          context.stroke();
+        }
+      }
+    }
+
+    nodes.forEach((node) => {
+      context.fillStyle = "rgba(140, 248, 255, 0.8)";
+      context.beginPath();
+      context.arc(node.x, node.y, 2.3, 0, Math.PI * 2);
+      context.fill();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+  requestAnimationFrame(animate);
+}
+
+setupNetworkCanvas();
 
 // Welcome Message
 addMessage("Hello! I'm Tali-Bot. How can I help you today?", "bot");

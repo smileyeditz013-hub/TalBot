@@ -257,6 +257,7 @@ body {
 .network-layer.layer-a {
   animation: networkDriftA 34s ease-in-out infinite alternate;
 }
+
 .network-layer.layer-b {
   animation: networkDriftB 40s ease-in-out infinite alternate;
 }
@@ -398,17 +399,16 @@ body {
 /* TALBOT LOGO */
 .talbot-logo {
   position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 120px;
-  background: white;
+  top: 16px;
+  left: 20px;
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   z-index: 10;
   overflow: hidden;
 }
@@ -419,25 +419,10 @@ body {
   object-fit: contain;
 }
 
-.talbot-label {
-  position: absolute;
-  top: 160px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(76, 175, 80, 0.9);
-  color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
-  z-index: 10;
-}
-
 /* CHAT MESSAGES */
 .chat-container {
   flex: 1;
-  margin-top: 120px;
+  margin-top: 84px;
   overflow-y: auto;
   padding: 20px;
   display: flex;
@@ -517,7 +502,6 @@ body {
   font-weight: 600;
   transition: all 0.3s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
 }
 
 .suggestion-btn:hover {
@@ -633,10 +617,10 @@ body {
   bottom: 40px;
   left: 40px;
   width: 142px;
-  height: 142px;
+  height: 146px;
   background-image: url("/images/talbot-sprite.png");
   background-repeat: no-repeat;
-  background-size: 568px 426px;
+  background-size: 568px 438px;
   z-index: 99999;
   pointer-events: none;
   image-rendering: pixelated;
@@ -666,8 +650,8 @@ body {
 }
 
 @keyframes eatAnim {
-  from { background-position: 0px -142px; }
-  to { background-position: -568px -142px; }
+  from { background-position: 0px -146px; }
+  to { background-position: -568px -146px; }
 }
 
 #talbot.sleep {
@@ -675,8 +659,8 @@ body {
 }
 
 @keyframes sleepAnim {
-  from { background-position: 0px -284px; }
-  to { background-position: -568px -284px; }
+  from { background-position: 0px -292px; }
+  to { background-position: -568px -292px; }
 }
 
 /* MOBILE RESPONSIVE */
@@ -715,10 +699,12 @@ body {
 
   .school-image {
     border-radius: 0 40px 40px 0;
+    object-position: center bottom;
   }
 
   .left-panel::before {
     border-radius: 0 40px 40px 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.62) 100%);
   }
 
   .right-panel {
@@ -756,18 +742,14 @@ body {
   }
 
   .talbot-logo {
-    width: 90px;
-    height: 90px;
-    top: 20px;
-  }
-
-  .talbot-label {
-    top: 120px;
-    font-size: 14px;
+    width: 60px;
+    height: 60px;
+    top: 14px;
+    left: 16px;
   }
 
   .chat-container {
-    margin-top: 100px;
+    margin-top: 76px;
   }
 
   .greeting-text h1 {
@@ -777,10 +759,11 @@ body {
   .greeting-text p {
     font-size: 16px;
   }
+
   #talbot {
     width: 100px;
-    height: 100px;
-    background-size: 400px 300px;
+    height: 103px;
+    background-size: 400px 309px;
     bottom: 20px;
     left: 20px;
   }
@@ -791,13 +774,13 @@ body {
   }
   
   @keyframes eatAnim {
-    from { background-position: 0px -100px; }
-    to { background-position: -400px -100px; }
+    from { background-position: 0px -103px; }
+    to { background-position: -400px -103px; }
   }
   
   @keyframes sleepAnim {
-    from { background-position: 0px -200px; }
-    to { background-position: -400px -200px; }
+    from { background-position: 0px -206px; }
+    to { background-position: -400px -206px; }
   }
 }
 </style>
@@ -887,7 +870,6 @@ body {
     <div class="talbot-logo">
       <img src="/images/TalBot Logo" alt="Tali-Bot" onerror="this.style.display='none'">
     </div>
-    <div class="talbot-label">Tali-Bot</div>
 
     <!-- Chat Container -->
     <div class="chat-container" id="messages"></div>

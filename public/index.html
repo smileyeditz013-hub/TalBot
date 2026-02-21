@@ -414,9 +414,11 @@ body {
 }
 
 .talbot-logo img {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
+  transform: scale(1.24);
 }
 
 /* CHAT MESSAGES */
@@ -571,6 +573,44 @@ body {
   transform: rotate(-45deg);
 }
 
+.mic-btn {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  min-height: 50px;
+  flex-shrink: 0;
+  background: #1565c0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.35);
+}
+
+.mic-btn:hover {
+  background: #0d47a1;
+  transform: scale(1.08);
+}
+
+.mic-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mic-btn.listening {
+  background: #c62828;
+  box-shadow: 0 0 0 8px rgba(198, 40, 40, 0.18);
+}
+
+.mic-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+}
+
 /* MOBILE MENU BUTTON */
 .menu-btn {
   display: none;
@@ -620,7 +660,7 @@ body {
   height: 146px;
   background-image: url("/images/talbot-sprite.png");
   background-repeat: no-repeat;
-  background-size: 568px 438px;
+  background-size: 568px 439px;
   z-index: 99999;
   pointer-events: none;
   image-rendering: pixelated;
@@ -650,8 +690,8 @@ body {
 }
 
 @keyframes eatAnim {
-  from { background-position: 0px -146px; }
-  to { background-position: -568px -146px; }
+  from { background-position: 0px -146.33px; }
+  to { background-position: -568px -146.33px; }
 }
 
 #talbot.sleep {
@@ -659,8 +699,8 @@ body {
 }
 
 @keyframes sleepAnim {
-  from { background-position: 0px -292px; }
-  to { background-position: -568px -292px; }
+  from { background-position: 0px -292.66px; }
+  to { background-position: -568px -292.66px; }
 }
 
 /* MOBILE RESPONSIVE */
@@ -699,7 +739,8 @@ body {
 
   .school-image {
     border-radius: 0 40px 40px 0;
-    object-position: center bottom;
+    object-fit: cover;
+    object-position: center 82%;
   }
 
   .left-panel::before {
@@ -728,6 +769,13 @@ body {
     min-height: 46px;
   }
 
+  .mic-btn {
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    min-height: 46px;
+  }
+
   .hud-ring.ring-a {
     width: 150px;
     height: 150px;
@@ -742,10 +790,10 @@ body {
   }
 
   .talbot-logo {
-    width: 60px;
-    height: 60px;
-    top: 14px;
-    left: 16px;
+    width: 64px;
+    height: 64px;
+    top: 12px;
+    left: 14px;
   }
 
   .chat-container {
@@ -762,8 +810,8 @@ body {
 
   #talbot {
     width: 100px;
-    height: 103px;
-    background-size: 400px 309px;
+    height: 103.08px;
+    background-size: 400px 309.15px;
     bottom: 20px;
     left: 20px;
   }
@@ -774,13 +822,13 @@ body {
   }
   
   @keyframes eatAnim {
-    from { background-position: 0px -103px; }
-    to { background-position: -400px -103px; }
+    from { background-position: 0px -103.08px; }
+    to { background-position: -400px -103.08px; }
   }
   
   @keyframes sleepAnim {
-    from { background-position: 0px -206px; }
-    to { background-position: -400px -206px; }
+    from { background-position: 0px -206.16px; }
+    to { background-position: -400px -206.16px; }
   }
 }
 </style>
@@ -877,6 +925,11 @@ body {
     <!-- Input Area -->
     <div class="input-container">
       <input type="text" id="input" placeholder="Ask anything about our school">
+      <button class="mic-btn" id="micBtn" title="Use microphone">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a1 1 0 1 1 2 0 7 7 0 0 1-6 6.93V21h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-3.07A7 7 0 0 1 5 11a1 1 0 1 1 2 0 5 5 0 0 0 10 0z"/>
+        </svg>
+      </button>
       <button class="send-btn" id="sendBtn">
         <svg viewBox="0 0 24 24">
           <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -893,10 +946,10 @@ function escapeHTML(str) {
     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
   }[m]));
 }
-
 const messages = document.getElementById("messages");
 const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
+const micBtn = document.getElementById("micBtn");
 const menuBtn = document.getElementById("menuBtn");
 const leftPanel = document.getElementById("leftPanel");
 
@@ -990,6 +1043,60 @@ async function send() {
   sendBtn.disabled = false;
   input.disabled = false;
   input.focus();
+}
+
+
+/* ================= VOICE INPUT ================= */
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let isListening = false;
+
+if (SpeechRecognition) {
+  recognition = new SpeechRecognition();
+  recognition.lang = "en-US";
+  recognition.interimResults = true;
+  recognition.continuous = false;
+
+  recognition.onstart = () => {
+    isListening = true;
+    micBtn.classList.add("listening");
+    micBtn.title = "Listening... tap to stop";
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = Array.from(event.results).map((result) => result[0].transcript).join("");
+    input.value = transcript;
+  };
+
+  recognition.onerror = () => {
+    micBtn.classList.remove("listening");
+    isListening = false;
+  };
+
+  recognition.onend = () => {
+    micBtn.classList.remove("listening");
+    micBtn.title = "Use microphone";
+    const hasText = input.value.trim().length > 0;
+    isListening = false;
+
+    if (hasText && !sendBtn.disabled) {
+      send();
+    }
+  };
+
+  micBtn.addEventListener("click", () => {
+    if (sendBtn.disabled || input.disabled) return;
+
+    if (isListening) {
+      recognition.stop();
+      return;
+    }
+
+    recognition.start();
+  });
+} else {
+  micBtn.disabled = true;
+  micBtn.title = "Microphone is not supported on this browser";
 }
 
 input.addEventListener("keydown", (e) => {
@@ -1156,3 +1263,4 @@ addMessage("Hello! I'm Tali-Bot. How can I help you today?", "bot");
 
 </body>
 </html>
+

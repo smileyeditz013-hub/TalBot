@@ -315,6 +315,124 @@ const knowledgeBase = {
    "This building is separated into two different building, left side and right side and it is connected by a bridge on the second floor, although it has two building it is the same . On the first floor of the left side of this building you can find the Guidance Office, MAPEH faculty and G8 JGM while on the second floor you can find the MTR, El/ ang Talipe, El/ ang Talipeño's newsroom and the finance office. While on the right side of the building on the first floor the school clinic and records office is located while above them is the SMB office and the Principal's office.",
     image: ""
   },
+  humss_subjects: {
+    keywords: [
+      "humss subjects",
+      "subjects under humss",
+      "subjects under humss strand",
+      "what are the subjects in humss",
+      "humss strand subjects",
+      "humss curriculum subjects"
+    ],
+    info_en: "HUMSS Strand Subjects\n\n"+
+    "1) HUMSS Specialized Subjects:\n"+
+    "• Creative Writing\n"+
+    "• Introduction to World Religions and Belief Systems\n"+
+    "• Creative Nonfiction\n"+
+    "• Trends, Networks, and Critical Thinking in the 21st Century\n"+
+    "• Philippine Politics and Governance\n"+
+    "• Community Engagement, Solidarity, and Citizenship\n"+
+    "• Disciplines and Ideas in the Social Sciences\n"+
+    "• Disciplines and Ideas in the Applied Social Sciences\n\n"+
+    "2) Applied Subjects:\n"+
+    "• English for Academic and Professional Purposes (EAPP)\n"+
+    "• Practical Research 1 and 2\n"+
+    "• Empowerment Technologies\n"+
+    "• Entrepreneurship\n\n"+
+    "3) Core Subjects:\n"+
+    "• Oral Communication\n"+
+    "• Reading and Writing\n"+
+    "• General Mathematics\n"+
+    "• Statistics and Probability\n"+
+    "• Physical Science\n"+
+    "• Earth and Life Science\n"+
+    "• Introduction to the Philosophy of the Human Person\n"+
+    "• Physical Education and Health\n\n"+
+    "HUMSS is ideal for students interested in communication, social issues, public service, and people-centered careers.",
+    info_tl: "HUMSS Strand Subjects\n\n"+
+    "1) HUMSS Specialized Subjects:\n"+
+    "• Creative Writing\n"+
+    "• Introduction to World Religions and Belief Systems\n"+
+    "• Creative Nonfiction\n"+
+    "• Trends, Networks, and Critical Thinking in the 21st Century\n"+
+    "• Philippine Politics and Governance\n"+
+    "• Community Engagement, Solidarity, and Citizenship\n"+
+    "• Disciplines and Ideas in the Social Sciences\n"+
+    "• Disciplines and Ideas in the Applied Social Sciences\n\n"+
+    "2) Applied Subjects:\n"+
+    "• English for Academic and Professional Purposes (EAPP)\n"+
+    "• Practical Research 1 and 2\n"+
+    "• Empowerment Technologies\n"+
+    "• Entrepreneurship\n\n"+
+    "3) Core Subjects:\n"+
+    "• Oral Communication\n"+
+    "• Reading and Writing\n"+
+    "• General Mathematics\n"+
+    "• Statistics and Probability\n"+
+    "• Physical Science\n"+
+    "• Earth and Life Science\n"+
+    "• Introduction to the Philosophy of the Human Person\n"+
+    "• Physical Education and Health\n\n"+
+    "Ang HUMSS ay para sa mga estudyanteng interesado sa communication, social issues, public service, at people-centered careers.",
+    image: ""
+  },
+  stem_subjects: {
+    keywords: [
+      "stem subjects",
+      "subjects under stem",
+      "subjects under stem strand",
+      "what are the subjects in stem",
+      "stem strand subjects",
+      "stem curriculum subjects"
+    ],
+    info_en: "STEM Strand Subjects\n\n"+
+    "1) Specialized STEM Subjects:\n"+
+    "• Pre-Calculus\n"+
+    "• Basic Calculus\n"+
+    "• General Biology 1 and 2\n"+
+    "• General Physics 1 and 2\n"+
+    "• General Chemistry 1 and 2\n\n"+
+    "2) Applied Subjects:\n"+
+    "• Empowerment Technologies\n"+
+    "• English for Academic and Professional Purposes\n"+
+    "• Practical Research 1 and 2\n"+
+    "• Inquiries, Investigations, and Immersion\n\n"+
+    "3) Core Subjects:\n"+
+    "• Oral Communication\n"+
+    "• Reading and Writing\n"+
+    "• 21st Century Literature\n"+
+    "• Contemporary Arts\n"+
+    "• Personal Development\n"+
+    "• Understanding Culture, Society and Politics\n"+
+    "• General Mathematics\n"+
+    "• Statistics and Probability\n"+
+    "• Physical Education and Health\n\n"+
+    "STEM is a strong choice for students planning careers in science, technology, engineering, mathematics, and health-related fields.",
+    info_tl: "STEM Strand Subjects\n\n"+
+    "1) Specialized STEM Subjects:\n"+
+    "• Pre-Calculus\n"+
+    "• Basic Calculus\n"+
+    "• General Biology 1 and 2\n"+
+    "• General Physics 1 and 2\n"+
+    "• General Chemistry 1 and 2\n\n"+
+    "2) Applied Subjects:\n"+
+    "• Empowerment Technologies\n"+
+    "• English for Academic and Professional Purposes\n"+
+    "• Practical Research 1 and 2\n"+
+    "• Inquiries, Investigations, and Immersion\n\n"+
+    "3) Core Subjects:\n"+
+    "• Oral Communication\n"+
+    "• Reading and Writing\n"+
+    "• 21st Century Literature\n"+
+    "• Contemporary Arts\n"+
+    "• Personal Development\n"+
+    "• Understanding Culture, Society and Politics\n"+
+    "• General Mathematics\n"+
+    "• Statistics and Probability\n"+
+    "• Physical Education and Health\n\n"+
+    "Ang STEM ay magandang strand para sa mga gustong pumasok sa science, technology, engineering, mathematics, at health-related na kurso.",
+    image: ""
+  },
 
   // GRADE 7 TEACHERS
   teacher_roselyn_acesor: {
@@ -1399,6 +1517,28 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

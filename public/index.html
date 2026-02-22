@@ -953,6 +953,24 @@ const micBtn = document.getElementById("micBtn");
 const menuBtn = document.getElementById("menuBtn");
 const leftPanel = document.getElementById("leftPanel");
 
+function getSessionId() {
+  const key = "talbot_session_id";
+  let sessionId = localStorage.getItem(key);
+
+  if (!sessionId && window.crypto?.randomUUID) {
+    sessionId = window.crypto.randomUUID().replace(/-/g, "");
+  }
+
+  if (!sessionId) {
+    sessionId = `talbot_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+  }
+
+  localStorage.setItem(key, sessionId);
+  return sessionId;
+}
+
+const sessionId = getSessionId();
+
 // Mobile Menu Toggle
 menuBtn.addEventListener("click", () => {
   menuBtn.classList.toggle("active");
@@ -1018,7 +1036,7 @@ async function getBotResponse(msg) {
   const res = await fetch("/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: msg })
+    body: JSON.stringify({ message: msg, sessionId })
   });
   return await res.json();
 }
@@ -1263,4 +1281,3 @@ addMessage("Hello! I'm Tali-Bot. How can I help you today?", "bot");
 
 </body>
 </html>
-

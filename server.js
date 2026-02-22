@@ -5,6 +5,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const SESSION_TTL_MS = 30 * 60 * 1000;
+const sessions = new Map();
+
 // ✅ SERVE THE WEBSITE
 app.use(express.static("public"));
 
@@ -1120,46 +1123,253 @@ function keywordLengthScore(keyword) {
   return keyword.split(" ").length;
 }
 
+function normalizeSessionId(sessionId) {
+  if (typeof sessionId !== "string") return null;
+  const trimmed = sessionId.trim();
+  return /^[a-zA-Z0-9_-]{8,80}$/.test(trimmed) ? trimmed : null;
+}
+
+function getSessionState(sessionId) {
+  const now = Date.now();
+
+  for (const [id, data] of sessions) {
+    if (now - data.updatedAt > SESSION_TTL_MS) {
+      sessions.delete(id);
+    }
+  }
+
+  if (!sessionId) {
+    return { history: [], updatedAt: now };
+  }
+
+  const existing = sessions.get(sessionId);
+  if (existing) {
+    existing.updatedAt = now;
+    return existing;
+  }
+
+  const fresh = { history: [], updatedAt: now };
+  sessions.set(sessionId, fresh);
+  return fresh;
+}
+
+function updateSessionState(sessionId, sessionState, message, matchedTopicKey = null) {
+  sessionState.lastUserMessage = message;
+  if (matchedTopicKey) {
+    sessionState.lastTopicKey = matchedTopicKey;
+  }
+
+  sessionState.history.push({
+    message,
+    topicKey: matchedTopicKey,
+    at: Date.now()
+  });
+
+  if (sessionState.history.length > 6) {
+    sessionState.history = sessionState.history.slice(-6);
+  }
+
+  sessionState.updatedAt = Date.now();
+  if (sessionId) sessions.set(sessionId, sessionState);
+}
+
+function isFollowUpMessage(message) {
+  const followUpPatterns = [
+    /^(ok|okay|sige|noted|thanks|thank you)[\s,.-]*(then|what about|how about)/,
+    /^(and|then|next|also)\b/,
+    /\b(what about|how about|and then)\b/
+  ];
+
+  return followUpPatterns.some((pattern) => pattern.test(message));
+}
+
+function isContextualReference(message) {
+  return /\b(it|that|there|doon|iyon|yun|niyan|nito)\b/.test(message);
+}
+
+function extractPreferredNameToken(message) {
+  const match = message.match(/\b(?:sir|maam|ma'am|mam)\s+([a-z]+)/i);
+  return match ? match[1].toLowerCase() : null;
+}
+
+function extractNameMentions(message) {
+  const mentions = [];
+  const regex = /\b(?:sir|maam|ma'am|mam)\s+[a-z]+(?:\s+(?!sir\b|maam\b|mam\b)[a-z]+)?/gi;
+  let match = regex.exec(message);
+
+  while (match) {
+    mentions.push(normalize(match[0]));
+    match = regex.exec(message);
+  }
+
+  return mentions;
+}
+
+function keywordHasNameToken(keyword, nameToken) {
+  if (!nameToken) return true;
+  const kw = normalize(keyword);
+  const pattern = new RegExp(`\\b${nameToken}\\b`, "i");
+  return pattern.test(kw);
+}
+
+function parseCorrection(message) {
+  const correctionPattern = /^(?:no|hindi|not|di)\b[\s\S]*?(?:,|but|kundi|instead)\s*(.+)$/i;
+  const directPattern = /^(?:no|hindi|not|di)\b[\s\S]*$/i;
+
+  const correctionMatch = message.match(correctionPattern);
+  if (correctionMatch) {
+    return { isCorrection: true, preferredQuery: normalize(correctionMatch[1]) };
+  }
+
+  if (directPattern.test(message)) {
+    const mentions = extractNameMentions(message);
+    if (mentions.length >= 2) {
+      return { isCorrection: true, preferredQuery: mentions[mentions.length - 1] };
+    }
+
+    const trailingMention = message.match(/\b(?:sir|maam|ma'am|mam)\s+[a-z]+(?:\s+(?!sir\b|maam\b|mam\b)[a-z]+)?$/i);
+    if (trailingMention) {
+      return { isCorrection: true, preferredQuery: normalize(trailingMention[0]) };
+    }
+
+    const stripped = message
+      .replace(/^(?:no|hindi|not|di)\b\s*/i, "")
+      .trim();
+    return { isCorrection: true, preferredQuery: normalize(stripped) };
+  }
+
+  return { isCorrection: false, preferredQuery: "" };
+}
+
+function getNameSuggestions(nameToken, maxResults = 5) {
+  if (!nameToken) return [];
+
+  const suggestions = new Set();
+
+  for (const key in knowledgeBase) {
+    const topic = knowledgeBase[key];
+    for (const kw of topic.keywords) {
+      if (keywordHasNameToken(kw, nameToken) && /^(sir|maam|ma'am|mam)\b/i.test(kw)) {
+        suggestions.add(kw);
+      }
+      if (suggestions.size >= maxResults) break;
+    }
+    if (suggestions.size >= maxResults) break;
+  }
+
+  return Array.from(suggestions);
+}
+
+function findBestMatch(message, minScore = 0.7, options = {}) {
+  const { excludeTopicKey = null, preferredNameToken = null } = options;
+  let bestMatch = null;
+  let bestScore = 0;
+
+  for (const key in knowledgeBase) {
+    if (excludeTopicKey && key === excludeTopicKey) continue;
+
+    const topic = knowledgeBase[key];
+
+    for (const kw of topic.keywords) {
+      if (!keywordHasNameToken(kw, preferredNameToken)) {
+        continue;
+      }
+
+      let score = similarity(message, normalize(kw));
+      const kwNorm = normalize(kw);
+
+      // Strong exact phrase match (prefer longer phrases)
+      if (message.includes(kwNorm)) {
+        score = 1 + keywordLengthScore(kw) * 0.2;
+      }
+
+      // Reject very short keywords unless exact
+      if (kwNorm.length < 5 && score < 1) {
+        continue;
+      }
+
+      if (score > bestScore && score >= minScore) {
+        bestScore = score;
+        bestMatch = { topic, key, matchedKeyword: kw, score };
+      }
+    }
+  }
+
+  return bestMatch;
+}
+
 app.post("/chat", (req, res) => {
   const message = normalize(req.body.message);
+  const sessionId = normalizeSessionId(req.body.sessionId);
+  const sessionState = getSessionState(sessionId);
   const lang = detectLanguage(message);
+  const preferredNameToken = extractPreferredNameToken(message);
+  const correction = parseCorrection(message);
+  const correctionNameToken = correction.isCorrection
+    ? extractPreferredNameToken(correction.preferredQuery)
+    : null;
+  const activeNameToken = correctionNameToken || preferredNameToken;
 
   const casual = casualReply(message, lang);
   if (casual) return res.json({ reply: casual });
 
   let bestMatch = null;
-  let bestScore = 0;
 
-  for (const key in knowledgeBase) {
-    const topic = knowledgeBase[key];
+  if (correction.isCorrection && correction.preferredQuery) {
+    bestMatch = findBestMatch(correction.preferredQuery, 0.62, {
+      excludeTopicKey: sessionState.lastTopicKey || null,
+      preferredNameToken: activeNameToken
+    });
+  }
 
-    for (const kw of topic.keywords) {
-      let score = similarity(message, normalize(kw));
-const kwNorm = normalize(kw);
+  if (!bestMatch) {
+    const baseThreshold = activeNameToken ? 0.58 : 0.7;
+    bestMatch = findBestMatch(message, baseThreshold, { preferredNameToken: activeNameToken });
+  }
 
-// Strong exact phrase match (prefer longer phrases)
-if (message.includes(kwNorm)) {
-  score = 1 + keywordLengthScore(kw) * 0.2;
-}
-
-
-// Reject very short keywords unless exact
-if (kwNorm.length < 5 && score < 1) {
-  continue;
-}
-
-if (score > bestScore && score >= 0.7) {
-  bestScore = score;
-  bestMatch = topic;
-}
+  if (!bestMatch && sessionState.lastTopicKey && (isFollowUpMessage(message) || isContextualReference(message))) {
+    const previousTopic = knowledgeBase[sessionState.lastTopicKey];
+    if (previousTopic) {
+      const contextualMessage = `${message} ${previousTopic.keywords.join(" ")}`;
+      bestMatch = findBestMatch(contextualMessage, 0.62, { preferredNameToken: activeNameToken });
     }
   }
   
   if (bestMatch) {
-    const info = (lang === "tl" && bestMatch.info_tl) ? bestMatch.info_tl : bestMatch.info_en;
+    updateSessionState(sessionId, sessionState, message, bestMatch.key);
+
+    const info = (lang === "tl" && bestMatch.topic.info_tl) ? bestMatch.topic.info_tl : bestMatch.topic.info_en;
     const response = { reply: rephrase(info, lang) };
-    if (bestMatch.image) response.image = bestMatch.image;
+    if (bestMatch.topic.image) response.image = bestMatch.topic.image;
     return res.json(response);
+  }
+
+  if (sessionState.lastTopicKey && isContextualReference(message)) {
+    const previousTopic = knowledgeBase[sessionState.lastTopicKey];
+    if (previousTopic) {
+      const info = (lang === "tl" && previousTopic.info_tl) ? previousTopic.info_tl : previousTopic.info_en;
+      updateSessionState(sessionId, sessionState, message, sessionState.lastTopicKey);
+      return res.json({
+        reply: lang === "tl"
+          ? `Mukhang tinutukoy mo ang huli mong tanong. ${rephrase(info, lang)}`
+          : `It sounds like you're referring to your previous question. ${rephrase(info, lang)}`,
+        image: previousTopic.image || undefined
+      });
+    }
+  }
+
+  updateSessionState(sessionId, sessionState, message);
+
+  if (activeNameToken) {
+    const nameSuggestions = getNameSuggestions(activeNameToken, 5);
+    if (nameSuggestions.length > 0) {
+      return res.json({
+        reply: lang === "tl"
+          ? "May ilang magkaparehong pangalan. Sino sa mga ito ang ibig mong sabihin?"
+          : "I found similar names. Which one did you mean?",
+        didYouMean: nameSuggestions
+      });
+    }
   }
 
   // NO MATCH FOUND - GET "DID YOU MEAN" SUGGESTIONS
@@ -1189,6 +1399,27 @@ if (score > bestScore && score >= 0.7) {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

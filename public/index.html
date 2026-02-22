@@ -615,7 +615,7 @@ body {
 
 /* MOBILE MENU BUTTON */
 .menu-btn {
-  display: none;
+  display: flex;
   position: fixed;
   top: 30px;
   left: 30px;
@@ -722,6 +722,66 @@ body {
 
 .menu-option:hover { background: rgba(17, 164, 201, 0.35); }
 
+.content-page {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: none;
+  flex-direction: column;
+  background: linear-gradient(160deg, rgba(2, 17, 27, 0.98), rgba(8, 45, 67, 0.96));
+  color: #e8fbff;
+}
+
+.content-page.show {
+  display: flex;
+}
+
+.content-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(111, 224, 255, 0.3);
+}
+
+.close-page-btn {
+  border: 1px solid rgba(111, 224, 255, 0.45);
+  background: rgba(17, 164, 201, 0.2);
+  color: #e8fbff;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.content-page-body {
+  overflow-y: auto;
+  padding: 22px;
+  display: grid;
+  gap: 16px;
+}
+
+.content-card {
+  background: rgba(7, 38, 57, 0.85);
+  border: 1px solid rgba(111, 224, 255, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.content-card img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.content-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 #talbot.idle {
   background-position: 0px 0px;
   animation: idleBob 2.5s infinite ease-in-out;
@@ -772,7 +832,6 @@ body {
   }
 
   .menu-btn {
-    display: flex;
     top: 20px;
     left: 20px;
   }
@@ -920,7 +979,19 @@ body {
 
 <div class="menu-panel" id="menuPanel">
   <button class="menu-option" id="bringBackTalbotBtn">Bring back Tali-Bot</button>
+  <button class="menu-option" id="talipanMapBtn">Talipan Map</button>
+  <button class="menu-option" id="eventsBtn">Events</button>
+  <button class="menu-option" id="earlyRegistrationsBtn">Early Registrations</button>
+  <button class="menu-option" id="uniformsBtn">Uniforms</button>
 </div>
+
+<section class="content-page" id="contentPage">
+  <div class="content-page-header">
+    <h2 id="contentPageTitle">Information</h2>
+    <button class="close-page-btn" id="closePageBtn">Close</button>
+  </div>
+  <div class="content-page-body" id="contentPageBody"></div>
+</section>
 
 <!-- TalBot Mascot -->
 <div id="talbot" class="idle"></div>
@@ -1014,7 +1085,82 @@ const micBtn = document.getElementById("micBtn");
 const menuBtn = document.getElementById("menuBtn");
 const menuPanel = document.getElementById("menuPanel");
 const bringBackTalbotBtn = document.getElementById("bringBackTalbotBtn");
+const talipanMapBtn = document.getElementById("talipanMapBtn");
+const eventsBtn = document.getElementById("eventsBtn");
+const earlyRegistrationsBtn = document.getElementById("earlyRegistrationsBtn");
+const uniformsBtn = document.getElementById("uniformsBtn");
+const contentPage = document.getElementById("contentPage");
+const contentPageTitle = document.getElementById("contentPageTitle");
+const contentPageBody = document.getElementById("contentPageBody");
+const closePageBtn = document.getElementById("closePageBtn");
 const leftPanel = document.getElementById("leftPanel");
+
+const contentPages = {
+  "talipan map": {
+    title: "Talipan Map",
+    items: [
+      { description: "Sorry, it is to be updated soon." }
+    ]
+  },
+  events: {
+    title: "Events",
+    items: [
+      { image: "/images/marahuyo2.jpg", description: "Marahuyo event highlights." },
+      { image: "/images/marahuyotickets.jpg", description: "Marahuyo ticket details." },
+      { image: "/images/research summit.webp", description: "Research Summit information." }
+    ]
+  },
+  "early registrations": {
+    title: "Early Registrations",
+    items: [
+      { image: "/images/grade7er.jpeg", description: "Grade 7 early registration details." },
+      { image: "/images/alser.jpeg", description: "ALS early registration details." },
+      { image: "/images/grade11er.jpeg", description: "Grade 11 early registration details." }
+    ]
+  },
+  uniforms: {
+    title: "Uniforms",
+    items: [
+      { image: "/images/junioruniform.jpeg", description: "Junior High School uniform guide." },
+      { image: "/images/tvlbhe.jpeg", description: "TVL-BHEM uniform guide." },
+      { image: "/images/humssb.jpeg", description: "HUMSS uniform guide." },
+      { image: "/images/typea.jpeg", description: "Type A uniform guide." }
+    ]
+  }
+};
+
+function openContentPage(key) {
+  const page = contentPages[key];
+  if (!page) return;
+
+  contentPageTitle.textContent = page.title;
+  contentPageBody.innerHTML = "";
+
+  page.items.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "content-card";
+
+    if (item.image) {
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.description || page.title;
+      img.loading = "lazy";
+      card.appendChild(img);
+    }
+
+    const text = document.createElement("p");
+    text.textContent = item.description || "";
+    card.appendChild(text);
+    contentPageBody.appendChild(card);
+  });
+
+  contentPage.classList.add("show");
+  menuPanel.classList.remove("show");
+}
+
+function closeContentPage() {
+  contentPage.classList.remove("show");
+}
 
 function getSessionId() {
   const key = "talbot_session_id";
@@ -1328,6 +1474,12 @@ bringBackTalbotBtn.addEventListener("click", () => {
   showMascot();
   menuPanel.classList.remove("show");
 });
+
+talipanMapBtn.addEventListener("click", () => openContentPage("talipan map"));
+eventsBtn.addEventListener("click", () => openContentPage("events"));
+earlyRegistrationsBtn.addEventListener("click", () => openContentPage("early registrations"));
+uniformsBtn.addEventListener("click", () => openContentPage("uniforms"));
+closePageBtn.addEventListener("click", closeContentPage);
 
 
 function setupNetworkCanvas() {

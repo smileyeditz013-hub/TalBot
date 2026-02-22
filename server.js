@@ -1024,11 +1024,11 @@ const knowledgeBase = {
     image: "/images/sherwin.jpeg"
   },
   teacher_marion_dator: {
-    keywords: ["marion joy dator", "marion dator", "ma'am marion joy", "maam dator g12", "dator g12 marion"],
+    keywords: ["marion joy dator", "marion dator", "ma'am marion joy", "maam dator g12", "dator g12 marion", "maam majoi", "majoi"],
     info_en: "Marion Joy M. Dator\n" +
     "Position: Teacher\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/majoi.jpeg"
   },
   teacher_leovino_merle: {
     keywords: ["leovino merle", "leovino a merle", "sir leovino", "merle g12 leovino"],
@@ -1501,6 +1501,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

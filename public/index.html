@@ -447,11 +447,11 @@ body {
 
 /* MESSAGE BUBBLES */
 .message {
-  max-width: 70%;
-  padding: 15px 20px;
+  max-width: 74%;
+  padding: 18px 24px;
   border-radius: 25px;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.6;
   animation: slideIn 0.3s ease;
   position: relative;
   z-index: 5;
@@ -518,10 +518,10 @@ body {
 .input-container {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px 20px;
+  gap: 16px;
+  padding: 20px 24px;
   background: rgba(7, 28, 45, 0.92);
-  border-radius: 35px;
+  border-radius: 40px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   position: relative;
   z-index: 10;
@@ -532,7 +532,7 @@ body {
   border: none;
   outline: none;
   background: transparent;
-  font-size: 15px;
+  font-size: 19px;
   font-family: 'Poppins', sans-serif;
   color: #dff8ff;
 }
@@ -542,10 +542,10 @@ body {
 }
 
 .send-btn {
-  width: 50px;
-  min-width: 50px;
-  height: 50px;
-  min-height: 50px;
+  width: 58px;
+  min-width: 58px;
+  height: 58px;
+  min-height: 58px;
   flex-shrink: 0;
   background: #0f88c0;
   border: none;
@@ -569,17 +569,17 @@ body {
 }
 
 .send-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   fill: white;
   transform: rotate(-45deg);
 }
 
 .mic-btn {
-  width: 50px;
-  min-width: 50px;
-  height: 50px;
-  min-height: 50px;
+  width: 58px;
+  min-width: 58px;
+  height: 58px;
+  min-height: 58px;
   flex-shrink: 0;
   background: #11a4c9;
   border: none;
@@ -608,8 +608,8 @@ body {
 }
 
 .mic-btn svg {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   fill: white;
 }
 
@@ -782,6 +782,94 @@ body {
   line-height: 1.45;
 }
 
+.celebration-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(11, 57, 84, 0.48), rgba(1, 8, 15, 0.8));
+}
+
+.celebration-overlay.active {
+  display: flex;
+  pointer-events: auto;
+}
+
+.celebration-banner {
+  padding: 28px 34px;
+  text-align: center;
+  border-radius: 18px;
+  border: 1px solid rgba(187, 241, 255, 0.7);
+  background: rgba(7, 33, 48, 0.88);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  color: #effcff;
+  animation: celebrationPulse 1.15s ease-in-out infinite alternate;
+}
+
+.celebration-banner h2 {
+  margin: 0;
+  font-size: clamp(28px, 3.7vw, 46px);
+}
+
+.celebration-banner p {
+  margin: 10px 0 0;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 0.5px;
+}
+
+.celebration-tip {
+  margin-top: 12px;
+  font-size: clamp(12px, 1.7vw, 16px);
+  opacity: 0.9;
+}
+
+.confetti-piece {
+  position: fixed;
+  top: -24px;
+  width: 10px;
+  height: 16px;
+  opacity: 0.96;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 2100;
+  animation: confettiFall var(--fall-duration, 3400ms) linear forwards;
+}
+
+.sparkle-piece {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  pointer-events: none;
+  z-index: 2102;
+  animation: sparkleBurst 900ms ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(var(--start-x), -30px, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(calc(var(--start-x) + var(--drift-x)), 110vh, 0) rotate(var(--spin-turn));
+    opacity: 0;
+  }
+}
+
+@keyframes celebrationPulse {
+  0% { transform: scale(1); box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4); }
+  100% { transform: scale(1.03); box-shadow: 0 24px 55px rgba(33, 204, 255, 0.38); }
+}
+
+@keyframes sparkleBurst {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2.4) translateY(-24px); opacity: 0; }
+}
+
 #talbot.idle {
   background-position: 0px 0px;
   animation: idleBob 2.5s infinite ease-in-out;
@@ -868,27 +956,29 @@ body {
     padding: 12px;
   }
 
+
   .input-container {
     gap: 10px;
-    padding: 12px 14px;
+    padding: 14px 16px;
   }
 
   .input-container input {
     min-width: 0;
+    font-size: 17px;
   }
 
   .send-btn {
-    width: 46px;
-    min-width: 46px;
-    height: 46px;
-    min-height: 46px;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    min-height: 50px;
   }
 
   .mic-btn {
-    width: 46px;
-    min-width: 46px;
-    height: 46px;
-    min-height: 46px;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    min-height: 50px;
   }
 
   .hud-ring.ring-a {
@@ -996,6 +1086,14 @@ body {
 <!-- TalBot Mascot -->
 <div id="talbot" class="idle"></div>
 
+<div class="celebration-overlay" id="celebrationOverlay" aria-hidden="true">
+  <div class="celebration-banner">
+    <h2>🎉 RESEARCH DEFENDED! 🎉</h2>
+    <p>You did it! Congratulations on your final defense! 🏆</p>
+    <p class="celebration-tip">Tap anywhere to close</p>
+  </div>
+</div>
+
 <!-- Main Container -->
 <div class="container">
   <!-- Left Panel -->
@@ -1094,6 +1192,9 @@ const contentPageTitle = document.getElementById("contentPageTitle");
 const contentPageBody = document.getElementById("contentPageBody");
 const closePageBtn = document.getElementById("closePageBtn");
 const leftPanel = document.getElementById("leftPanel");
+const celebrationOverlay = document.getElementById("celebrationOverlay");
+let celebrationActive = false;
+let celebrationWaveInterval = null;
 
 const contentPages = {
   "talipan map": {
@@ -1246,6 +1347,130 @@ function addMessage(text, type, image = null, suggestions = null) {
   messages.scrollTop = messages.scrollHeight;
 }
 
+function normalizeCelebrationTrigger(text) {
+  return text.toLowerCase().replace(/[^a-z\s]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function isCelebrationTrigger(text) {
+  return normalizeCelebrationTrigger(text) === "research defended";
+}
+
+function playCelebrationSound() {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return;
+
+  const audioCtx = new AudioCtx();
+  const now = audioCtx.currentTime;
+  const melody = [523.25, 659.25, 783.99, 1046.5, 783.99, 1318.51];
+
+  melody.forEach((frequency, index) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = frequency;
+
+    const start = now + index * 0.18;
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(0.22, start + 0.03);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.18);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(start);
+    osc.stop(start + 0.21);
+  });
+
+  const burst = audioCtx.createBufferSource();
+  const noiseBuffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.33, audioCtx.sampleRate);
+  const data = noiseBuffer.getChannelData(0);
+  for (let i = 0; i < data.length; i += 1) {
+    data[i] = (Math.random() * 2 - 1) * 0.7;
+  }
+
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = "highpass";
+  filter.frequency.value = 1200;
+
+  const burstGain = audioCtx.createGain();
+  burstGain.gain.setValueAtTime(0.0001, now + 0.5);
+  burstGain.gain.exponentialRampToValueAtTime(0.16, now + 0.56);
+  burstGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.86);
+
+  burst.buffer = noiseBuffer;
+  burst.connect(filter);
+  filter.connect(burstGain);
+  burstGain.connect(audioCtx.destination);
+  burst.start(now + 0.5);
+  burst.stop(now + 0.9);
+
+  setTimeout(() => audioCtx.close(), 1600);
+}
+
+function launchConfettiBurst(totalPieces = 320) {
+  const colors = ["#ffd166", "#f94144", "#4cc9f0", "#43aa8b", "#f72585", "#f9c74f", "#90be6d"];
+  for (let i = 0; i < totalPieces; i += 1) {
+    const piece = document.createElement("span");
+    piece.className = "confetti-piece";
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.setProperty("--start-x", `${Math.random() * window.innerWidth}px`);
+    piece.style.setProperty("--drift-x", `${(Math.random() - 0.5) * 360}px`);
+    piece.style.setProperty("--spin-turn", `${(Math.random() * 1440 - 720).toFixed(0)}deg`);
+    piece.style.setProperty("--fall-duration", `${2400 + Math.random() * 1900}ms`);
+    piece.style.width = `${7 + Math.random() * 8}px`;
+    piece.style.height = `${10 + Math.random() * 12}px`;
+    piece.style.opacity = `${0.7 + Math.random() * 0.3}`;
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 4600);
+  }
+}
+
+
+function launchSparkleBursts(totalBursts = 36) {
+  for (let i = 0; i < totalBursts; i += 1) {
+    const sparkle = document.createElement("span");
+    sparkle.className = "sparkle-piece";
+    sparkle.style.left = `${Math.random() * window.innerWidth}px`;
+    sparkle.style.top = `${Math.random() * window.innerHeight}px`;
+    sparkle.style.width = `${4 + Math.random() * 8}px`;
+    sparkle.style.height = sparkle.style.width;
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 920);
+  }
+}
+
+function clearCelebrationParticles() {
+  document.querySelectorAll(".confetti-piece, .sparkle-piece").forEach((el) => el.remove());
+}
+
+function stopCelebration() {
+  celebrationActive = false;
+  celebrationOverlay.classList.remove("active");
+  if (celebrationWaveInterval) {
+    clearInterval(celebrationWaveInterval);
+    celebrationWaveInterval = null;
+  }
+  clearCelebrationParticles();
+}
+
+function triggerCelebration() {
+  celebrationActive = true;
+  celebrationOverlay.classList.add("active");
+  clearCelebrationParticles();
+  launchConfettiBurst(420);
+  launchSparkleBursts(50);
+  playCelebrationSound();
+
+  if (celebrationWaveInterval) {
+    clearInterval(celebrationWaveInterval);
+  }
+
+  celebrationWaveInterval = setInterval(() => {
+    if (!celebrationActive) return;
+    launchConfettiBurst(140);
+    launchSparkleBursts(18);
+  }, 1000);
+}
+
 // Get Bot Response
 async function getBotResponse(msg) {
   const res = await fetch("/chat", {
@@ -1260,6 +1485,7 @@ async function getBotResponse(msg) {
 async function send() {
   const msg = input.value.trim();
   if (!msg) return;
+  const shouldCelebrate = isCelebrationTrigger(msg);
 
   input.value = "";
   addMessage(msg, "user");
@@ -1272,6 +1498,10 @@ async function send() {
 
   messages.removeChild(messages.lastChild);
   addMessage(data.reply, "bot", data.image, data.didYouMean);
+
+  if (shouldCelebrate) {
+    triggerCelebration();
+  }
 
   sendBtn.disabled = false;
   input.disabled = false;
@@ -1474,6 +1704,9 @@ bringBackTalbotBtn.addEventListener("click", () => {
   showMascot();
   menuPanel.classList.remove("show");
 });
+
+celebrationOverlay.addEventListener("click", stopCelebration);
+celebrationOverlay.addEventListener("touchstart", stopCelebration, { passive: true });
 
 talipanMapBtn.addEventListener("click", () => openContentPage("talipan map"));
 eventsBtn.addEventListener("click", () => openContentPage("events"));

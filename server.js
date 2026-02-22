@@ -78,17 +78,7 @@ const knowledgeBase = {
     ],
     info_en: "Our school is located in Sitio Fori, Talipan, Pagbilao, Quezon.",
     info_tl: "Matatagpuan ang aming paaralan sa Sitio Fori, Talipan, Pagbilao, Quezon."
-  },
-  mobile_legends: {
-    keywords: ["build ni claude", "claude build", "best build for claude"],
-    info_en: "Tough boots, Demon Hunter Sword, Golden Staff, Corrosion Scythe, Malefic Gun, Wind of Nature.",
-    info_tl: "Tough boots, Demon Hunter Sword, Golden Staff, Corrosion Scythe, Malefic Gun, Wind of Nature."
-  },
-  recipe: {
-    keywords: ["adobo recipe", "chicken adobo", "how to cook adobo", "paano magluto ng adobo"],
-    info_en: "Chicken adobo is a popular Filipino dish that is easy to prepare and rich in flavor...",
-    info_tl: "Ang chicken adobo ay isa sa mga pinakasikat na pagkaing Pilipino at madaling lutuin..."
-  },
+   },
   organization1: {
     keywords: ["tdlc", "talipan drum and lyre corps", "drum and lyre corps", "talipan drum corps", "talipan band", "talipan banda"],
     info_en: "Talipan Drum and lyre is an organization composed of different students who loves to play in a band. They play different instrument such as different kind of drums, lyres, and marimbas while the other members are majorettes and flags/ color guards.\n\n"+
@@ -111,41 +101,35 @@ const knowledgeBase = {
     "               Justine Merto\n",
     image: "https://i.postimg.cc/v8gZ9Y9J/FB-IMG-1769916076188.jpg"
   },
-  random1: {
-    keywords: ["how do i help", "pano ako tutulong", "tulong"],
-    info_en: "Help however you can.",
-    info_tl: "Tumulong sa abot ng iyong makakaya.",
-    image: "https://www.bing.com/th/id/OIP.EXHTMia2dVTp1zTCP2kZfwHaE7?w=215&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
-  },
-  organization2: {
+    organization2: {
     keywords: ["el/ang talipeno", "el ang talipeno"],
     info_en: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
     info_tl: "El/ang Talipeño is an organization consisting of young journalists that document sports, news, events happening inside of the campus. They are composed of young and talented students that earned many achievements and continue growing.",
-    image: "/images/wallybayola.jpeg"
+    image: "/images/FB_IMG_1770707199400.jpeg"
   },
   organization3: {
     keywords: ["yes o", "yes-o"],
     info_en: "Yes-O is an organization consisting of students who protects the school environment. They are students who is responsible for the cleanliness of campus.",
     info_tl: "Yes-O is an organization consisting of students who protects the school environment. They are students who is responsible for the cleanliness of campus.",
-    image: "/images/wallybayola.jpeg"
+    image: "/images/yes-o.jpeg"
   },
   organization4: {
     keywords: ["koro talipeno","koro talipeño"],
     info_en: "Koro Talipeño is an organization that is known as the voice of Talipan. They are young talented singers that perform different Filipino folk songs and OPM. They are mentored by Juan Carlo Villanueva and through the years different students with the passion to sing, join them and with the help of their mentor they enhance their singing.",
     info_tl: "Koro Talipeño is an organization that is known as the voice of Talipan. They are young talented singers that perform different Filipino folk songs and OPM. They are mentored by Juan Carlo Villanueva and through the years different students with the passion to sing, join them and with the help of their mentor they enhance their singing.",
-    image: "/images/wallybayola.jpeg"
+    image: "/images/koro.jpeg"
   },
   organization5: {
-   keywords: ["ssg", "student supreme government", "student council", "supreme student government"],
-   info_en: "SSG is an organization in Talipan National High school that is a set of student council which is the highest governing body and the primary voice of the studentry, working to promote student welfare, leadership, and responsible citizenship.",
-   info_tl: "SSG is an organization in Talipan National High school that is a set of student council which is the highest governing body and the primary voice of the studentry, working to promote student welfare, leadership, and responsible citizenship.",
-   image: ""
+   keywords: ["sslg", "student supreme learner government", "student council", "supreme student learner government"],
+   info_en: "SSLG is an organization in Talipan National High school that is a set of student council which is the highest governing body and the primary voice of the studentry, working to promote student welfare, leadership, and responsible citizenship.",
+   info_tl: "SSLG is an organization in Talipan National High school that is a set of student council which is the highest governing body and the primary voice of the studentry, working to promote student welfare, leadership, and responsible citizenship.",
+   image: "/images/SSLG.jpeg"
   },
   organization6: {
    keywords: ["indayog", "dance"],
    info_en: "Indayog is an organization which is composed of student dancers. They represent the school in dance competition and through the years they competed and achieve many awards.",
    info_tl: "Indayog is an organization which is composed of student dancers. They represent the school in dance competition and through the years they competed and achieve many awards.",
-   image: "",
+   image: "/images/indayog.jpeg",
   },
   rules_and_regulations: {
    keywords: ["rules","regulations", "rules and regulation", "school rules", "school regulations", "patakaran ng paaralan", "mga patakaran ng paaralan"],
@@ -1037,7 +1021,7 @@ const knowledgeBase = {
     info_en: "Sherwin S. Diala\n" +
     "Position: Teacher\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/sherwin.jpeg"
   },
   teacher_marion_dator: {
     keywords: ["marion joy dator", "marion dator", "ma'am marion joy", "maam dator g12", "dator g12 marion"],
@@ -1517,6 +1501,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

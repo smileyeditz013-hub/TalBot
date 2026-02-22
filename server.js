@@ -1061,7 +1061,7 @@ const knowledgeBase = {
     info_en: "Gear G. Arellano II\n" +
     "Position: Teacher\n" +
     "Grade Level: Grade 12",
-    image: ""
+    image: "/images/gear.jpeg"
   },
   teacher_jhon_adel: {
     keywords: ["jhon glendon adel", "jhon adel", "sir jhon glendon", "adel g12 jhon"],
@@ -1506,6 +1506,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

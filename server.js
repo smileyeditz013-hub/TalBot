@@ -15,6 +15,11 @@ app.use(express.static("public"));
 // SCHOOL INFORMATION (DO NOT ADD / REMOVE INFO)
 // ===============================
 const knowledgeBase = {
+  celebration: {
+    keywords: ["research defended", "research is defended", "we defended our research", "defense finished", "defense done"],
+    info_en: "🎉 Congratulations! That is an incredible achievement. You defended your research—time to celebrate your hard work, teamwork, and dedication!",
+    info_tl: "🎉 Binabati kita! Napakalaking achievement niyan. Naipagtanggol ninyo ang inyong research—oras na para mag-celebrate ng inyong sipag, teamwork, at dedikasyon!"
+  },
   enrollment: {
     keywords: ["enroll", "how to enroll", "enrollment", "register", "admission", "mag enroll", "mag-enroll", "pag enroll"],
     info_en: "For G12:  Look for g12 teachers, advisers, head teachers-in-charge and bring the following requirements:\n"+
@@ -1501,6 +1506,94 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

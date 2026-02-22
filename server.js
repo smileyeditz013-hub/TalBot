@@ -561,7 +561,7 @@ const knowledgeBase = {
     info_en: "Ma'am Chelsea M. De Leon\n" +
     "Position: Adviser of G8 CMD\n" +
     "Grade Level: Grade 8",
-    image: ""
+    image: "/images/Chelsy.jpeg"
   },
   teacher_ian_jalbuena: {
     keywords: ["ian chris jalbuena", "ian jalbuena", "sir ian chris", "sir jalbuena", "jalbuena g8", "g8 icj adviser"],
@@ -1501,6 +1501,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 

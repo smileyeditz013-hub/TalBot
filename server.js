@@ -1083,7 +1083,13 @@ const knowledgeBase = {
     "Position: Teacher\n" +
     "Grade Level: Grade 12",
     image: ""
-  }
+  },
+  teacher_jayson_miranda: {
+    keywords: ["jayson v. miranda", "jayson", "sir jayson"],
+    info_en: "Jayson V. Miranda\n"+
+      "Filipino Teacher",
+    image: "/images/jayson.jpeg"
+  },
 };
 
 // ===============================
@@ -1506,6 +1512,7 @@ app.post("/chat", (req, res) => {
 app.listen(3000, () => {
   console.log("TalBot running at http://localhost:3000");
 });
+
 
 
 
